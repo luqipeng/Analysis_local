@@ -1,0 +1,49 @@
+ul.index-feature li {
+    float: left;
+    width: 25%;
+    text-align: center;
+    line-height: 200%;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #999;
+}
+
+.photo-cat {
+    position: relative;
+    border: 1px solid #c3d4e7;
+    margin: 0;
+    height: 302px;
+    background: url(/images/cat_hot_bg.png) repeat-x left -38px;
+    position: relative;
+    height: 220px;
+    float: left;
+    width: 342px;
+
+}
+
+.photo-cat h5 {
+    background-image: url(/images/title_photo.png);
+    background-repeat: no-repeat;
+    height: 35px;
+    padding-left: 60px;
+    display: block;
+    float: left;
+    text-decoration: none;
+    width: 100%;
+    color: #ffffff;
+    position: absolute;
+    left: 14px;
+    top: -14px;
+    width: 98%;
+    line-height: 35px;
+}
+
+.content {
+    position: absolute;
+    top: 50px;
+}
+
+.newslist {
+    line-height: 24px;
+    padding-left: 12px;;
+}

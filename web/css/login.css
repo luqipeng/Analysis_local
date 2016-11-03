@@ -1,0 +1,117 @@
+html {
+    background-image: none;
+}
+
+label.iPhoneCheckLabelOn span {
+    padding-left: 0px
+}
+
+#wrap {
+    width: 860px;
+    background-position: 0px 0px;
+    padding: 0px;
+    min-height: 400px;
+    margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+
+}
+
+#versionBar {
+    background-color: #212121;
+    position: fixed;
+    width: 100%;
+    height: 35px;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    line-height: 35px;
+    z-index: 11;
+    -webkit-box-shadow: black 0px 10px 10px -10px inset;
+    -moz-box-shadow: black 0px 10px 10px -10px inset;
+    box-shadow: black 0px 10px 10px -10px inset;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 10px;
+    color: #CCC;
+}
+
+.copyright a {
+    color: #A31F1A;
+    text-decoration: none
+}
+
+.on_off_checkbox {
+    width: 0px;
+}
+
+#login .logo {
+    width: 390px;
+    height: 51px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.topbanner {
+    width: 100%;
+    height: 220px;
+    background: url(/images/topbanner.jpg) center bottom/cover no-repeat;
+    position: relative;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/topbanner.jpg', sizingMethod='scale');
+}
+
+.topbanner .poswrap {
+    position: absolute;
+    width: 400px;
+    margin-left: -200px;
+    left: 50%;
+    bottom: 25px;
+}
+
+.topbanner .brand {
+    display: block;
+    margin: 0 auto 5px;
+    width: 289px;
+    height: 46px;
+
+}
+
+.topbanner .brand h1 {
+    color: #ffffff;
+    margin-top: 0;
+    color: #fff;
+    font-size: 64px;
+    font-weight: 700;
+    -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-align: center;
+    border-width: 0;
+}
+
+.topbanner .desc {
+    padding-top: 10px;
+    color: #fff;
+    font-size: 18px;
+    -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-align: center;
+}
+
+.mlogin {
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+    -moz-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    -webkit-text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    text-align: center;
+    padding-top: 25px;
+}

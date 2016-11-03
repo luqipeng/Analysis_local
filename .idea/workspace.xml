@@ -1,0 +1,1754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b5f1e8a1-a279-403c-b46f-bc57371e0eee" name="Default" comment="1wwww" />
+    <list id="95b13c48-2a3b-4580-b748-2b8bfcef73f1" name="Failed commit: Default" comment="1" />
+    <list id="678329e6-4d7f-48d1-a2b0-2fe693cbd022" name="Failed commit: Default (2)" comment="1" />
+    <list id="c5a52599-ff54-4908-88b7-f6ce5c5642d6" name="Failed commit: Failed commit: Default" comment="1wwww" />
+    <ignored path="Analysis_local.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="Analysis_local" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="FrontController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/front/FrontController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="834" column="0" selection-start-line="834" selection-start-column="0" selection-end-line="834" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#5913#5914#0" expanded="false" />
+                <element signature="e#5934#5935#0" expanded="false" />
+                <element signature="e#5977#5978#0" expanded="false" />
+                <element signature="e#6006#6007#0" expanded="false" />
+                <element signature="e#6138#6139#0" expanded="false" />
+                <element signature="e#6183#6184#0" expanded="false" />
+                <element signature="e#67768#67769#0" expanded="false" />
+                <element signature="e#67823#67824#0" expanded="false" />
+                <marker date="1478053273733" expanded="true" signature="18548:18588" placeholder="select * fro..caiji_category..." />
+                <marker date="1478053273733" expanded="true" signature="18911:18950" placeholder="select * fro..caiji_category..." />
+                <marker date="1478053273733" expanded="true" signature="19278:19317" placeholder="select * fro..caiji_category..." />
+                <marker date="1478053273733" expanded="true" signature="19654:19693" placeholder="select * fro..caiji_category..." />
+                <marker date="1478053273733" expanded="true" signature="43490:43597" placeholder="select * fro..missingValue..." />
+                <marker date="1478053273733" expanded="true" signature="44658:44805" placeholder="SELECT DISTI..." />
+                <marker date="1478053273733" expanded="true" signature="67385:67427" placeholder="select * fro..caiji_category..." />
+                <marker date="1478053273733" expanded="true" signature="84513:84595" placeholder="INSERT INTO ..." />
+                <marker date="1478053273733" expanded="true" signature="84660:84715" placeholder="delete from ..." />
+                <marker date="1478053273733" expanded="true" signature="84749:84838" placeholder="delete from ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/util/Constant.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.34494773">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommodityManageController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/CommodityManageController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="353" column="28" selection-start-line="353" selection-start-column="28" selection-end-line="353" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#3179#3180#0" expanded="false" />
+                <element signature="e#3200#3201#0" expanded="false" />
+                <element signature="e#3243#3244#0" expanded="false" />
+                <element signature="e#3272#3273#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommodityAnalysisController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/CommodityAnalysisController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="710" column="67" selection-start-line="710" selection-start-column="67" selection-end-line="710" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#4237#4238#0" expanded="false" />
+                <element signature="e#4258#4259#0" expanded="false" />
+                <element signature="e#4301#4302#0" expanded="false" />
+                <element signature="e#4330#4331#0" expanded="false" />
+                <element signature="e#4736#4737#0" expanded="false" />
+                <element signature="e#4794#4795#0" expanded="false" />
+                <marker date="1475154543943" expanded="true" signature="8201:8366" placeholder="select count..commodity_analysis..." />
+                <marker date="1475154543943" expanded="true" signature="8392:11017" placeholder="select this_..commodity_analysis..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MGroupController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/group/controller/MGroupController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="226" column="34" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#3105#3106#0" expanded="false" />
+                <element signature="e#3126#3127#0" expanded="false" />
+                <element signature="e#3169#3170#0" expanded="false" />
+                <element signature="e#3198#3199#0" expanded="false" />
+                <element signature="e#3340#3341#0" expanded="false" />
+                <element signature="e#3399#3400#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommodityAnalysisEntity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/compare/entity/CommodityAnalysisEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="107" column="23" selection-start-line="107" selection-start-column="23" selection-end-line="107" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#3204#3205#0" expanded="false" />
+                <element signature="e#3230#3231#0" expanded="false" />
+                <element signature="e#3295#3296#0" expanded="false" />
+                <element signature="e#3334#3335#0" expanded="false" />
+                <element signature="e#3458#3459#0" expanded="false" />
+                <element signature="e#3474#3475#0" expanded="false" />
+                <element signature="e#3508#3509#0" expanded="false" />
+                <element signature="e#3527#3528#0" expanded="false" />
+                <element signature="e#3638#3639#0" expanded="false" />
+                <element signature="e#3656#3657#0" expanded="false" />
+                <element signature="e#3693#3694#0" expanded="false" />
+                <element signature="e#3716#3717#0" expanded="false" />
+                <element signature="e#3869#3870#0" expanded="false" />
+                <element signature="e#3894#3895#0" expanded="false" />
+                <element signature="e#4006#4007#0" expanded="false" />
+                <element signature="e#4033#4034#0" expanded="false" />
+                <element signature="e#4201#4202#0" expanded="false" />
+                <element signature="e#4231#4232#0" expanded="false" />
+                <element signature="e#4358#4359#0" expanded="false" />
+                <element signature="e#4395#4396#0" expanded="false" />
+                <element signature="e#4569#4570#0" expanded="false" />
+                <element signature="e#4601#4602#0" expanded="false" />
+                <element signature="e#4734#4735#0" expanded="false" />
+                <element signature="e#4775#4776#0" expanded="false" />
+                <element signature="e#4943#4944#0" expanded="false" />
+                <element signature="e#4973#4974#0" expanded="false" />
+                <element signature="e#5100#5101#0" expanded="false" />
+                <element signature="e#5137#5138#0" expanded="false" />
+                <element signature="e#5324#5325#0" expanded="false" />
+                <element signature="e#5360#5361#0" expanded="false" />
+                <element signature="e#5505#5506#0" expanded="false" />
+                <element signature="e#5554#5555#0" expanded="false" />
+                <element signature="e#5731#5732#0" expanded="false" />
+                <element signature="e#5764#5765#0" expanded="false" />
+                <element signature="e#5900#5901#0" expanded="false" />
+                <element signature="e#5943#5944#0" expanded="false" />
+                <element signature="e#6114#6115#0" expanded="false" />
+                <element signature="e#6145#6146#0" expanded="false" />
+                <element signature="e#6275#6276#0" expanded="false" />
+                <element signature="e#6314#6315#0" expanded="false" />
+                <element signature="e#6497#6498#0" expanded="false" />
+                <element signature="e#6532#6533#0" expanded="false" />
+                <element signature="e#6674#6675#0" expanded="false" />
+                <element signature="e#6721#6722#0" expanded="false" />
+                <element signature="e#6897#6898#0" expanded="false" />
+                <element signature="e#6930#6931#0" expanded="false" />
+                <element signature="e#7066#7067#0" expanded="false" />
+                <element signature="e#7109#7110#0" expanded="false" />
+                <element signature="e#7264#7265#0" expanded="false" />
+                <element signature="e#7290#7291#0" expanded="false" />
+                <element signature="e#7405#7406#0" expanded="false" />
+                <element signature="e#7434#7435#0" expanded="false" />
+                <element signature="e#7601#7602#0" expanded="false" />
+                <element signature="e#7631#7632#0" expanded="false" />
+                <element signature="e#7758#7759#0" expanded="false" />
+                <element signature="e#7795#7796#0" expanded="false" />
+                <element signature="e#7956#7957#0" expanded="false" />
+                <element signature="e#7984#7985#0" expanded="false" />
+                <element signature="e#8105#8106#0" expanded="false" />
+                <element signature="e#8138#8139#0" expanded="false" />
+                <element signature="e#8302#8303#0" expanded="false" />
+                <element signature="e#8331#8332#0" expanded="false" />
+                <element signature="e#8455#8456#0" expanded="false" />
+                <element signature="e#8490#8491#0" expanded="false" />
+                <element signature="e#8658#8659#0" expanded="false" />
+                <element signature="e#8688#8689#0" expanded="false" />
+                <element signature="e#8815#8816#0" expanded="false" />
+                <element signature="e#8852#8853#0" expanded="false" />
+                <element signature="e#9048#9049#0" expanded="false" />
+                <element signature="e#9087#9088#0" expanded="false" />
+                <element signature="e#9241#9242#0" expanded="false" />
+                <element signature="e#9296#9297#0" expanded="false" />
+                <element signature="e#9495#9496#0" expanded="false" />
+                <element signature="e#9535#9536#0" expanded="false" />
+                <element signature="e#9922#9923#0" expanded="false" />
+                <element signature="e#9954#9955#0" expanded="false" />
+                <element signature="e#10087#10088#0" expanded="false" />
+                <element signature="e#10128#10129#0" expanded="false" />
+                <element signature="e#10310#10311#0" expanded="false" />
+                <element signature="e#10345#10346#0" expanded="false" />
+                <element signature="e#10487#10488#0" expanded="false" />
+                <element signature="e#10534#10535#0" expanded="false" />
+                <element signature="e#10698#10699#0" expanded="false" />
+                <element signature="e#10727#10728#0" expanded="false" />
+                <element signature="e#10851#10852#0" expanded="false" />
+                <element signature="e#10886#10887#0" expanded="false" />
+                <element signature="e#11059#11060#0" expanded="false" />
+                <element signature="e#11091#11092#0" expanded="false" />
+                <element signature="e#11224#11225#0" expanded="false" />
+                <element signature="e#11265#11266#0" expanded="false" />
+                <element signature="e#11423#11424#0" expanded="false" />
+                <element signature="e#11450#11451#0" expanded="false" />
+                <element signature="e#11568#11569#0" expanded="false" />
+                <element signature="e#11599#11600#0" expanded="false" />
+                <element signature="e#11760#11761#0" expanded="false" />
+                <element signature="e#11788#11789#0" expanded="false" />
+                <element signature="e#11909#11910#0" expanded="false" />
+                <element signature="e#11942#11943#0" expanded="false" />
+                <element signature="e#12100#12101#0" expanded="false" />
+                <element signature="e#12127#12128#0" expanded="false" />
+                <element signature="e#12245#12246#0" expanded="false" />
+                <element signature="e#12276#12277#0" expanded="false" />
+                <element signature="e#12462#12463#0" expanded="false" />
+                <element signature="e#12498#12499#0" expanded="false" />
+                <element signature="e#12643#12644#0" expanded="false" />
+                <element signature="e#12692#12693#0" expanded="false" />
+                <element signature="e#12875#12876#0" expanded="false" />
+                <element signature="e#12910#12911#0" expanded="false" />
+                <element signature="e#13052#13053#0" expanded="false" />
+                <element signature="e#13099#13100#0" expanded="false" />
+                <element signature="e#13269#13270#0" expanded="false" />
+                <element signature="e#13300#13301#0" expanded="false" />
+                <element signature="e#13430#13431#0" expanded="false" />
+                <element signature="e#13469#13470#0" expanded="false" />
+                <element signature="e#13639#13640#0" expanded="false" />
+                <element signature="e#13670#13671#0" expanded="false" />
+                <element signature="e#13800#13801#0" expanded="false" />
+                <element signature="e#13839#13840#0" expanded="false" />
+                <element signature="e#13867#13868#0" expanded="false" />
+                <element signature="e#13885#13886#0" expanded="false" />
+                <element signature="e#14047#14048#0" expanded="false" />
+                <element signature="e#14070#14071#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SyncController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/controller/SyncController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="349" column="63" selection-start-line="349" selection-start-column="63" selection-end-line="349" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2340#2341#0" expanded="false" />
+                <element signature="e#2361#2362#0" expanded="false" />
+                <element signature="e#2404#2405#0" expanded="false" />
+                <element signature="e#2433#2434#0" expanded="false" />
+                <element signature="e#58780#58781#0" expanded="false" />
+                <element signature="e#58821#58822#0" expanded="false" />
+                <marker date="1478082769486" expanded="true" signature="3918:4013" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="4393:4436" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="4393:4449" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="4393:4467" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="4820:4887" placeholder="update store..." />
+                <marker date="1478082769486" expanded="true" signature="6745:6772" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="6974:7227" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="7248:7343" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="7364:7428" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="7734:8002" placeholder="UPDATE store..." />
+                <marker date="1478082769486" expanded="true" signature="14196:14223" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="14196:14236" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="14196:14256" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="14196:14269" placeholder="select * fro..store_product..." />
+                <marker date="1478082769486" expanded="true" signature="14630:14696" placeholder="update store..." />
+                <marker date="1478082769486" expanded="true" signature="15732:15786" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="16027:16149" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="16092:16131" placeholder="select produ..." />
+                <marker date="1478082769486" expanded="true" signature="16404:16660" placeholder="update produ..." />
+                <marker date="1478082769486" expanded="true" signature="16798:17054" placeholder="update produ..." />
+                <marker date="1478082769486" expanded="true" signature="18020:18093" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="18291:18460" placeholder="SELECT ROUND..." />
+                <marker date="1478082769486" expanded="true" signature="20891:21013" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="20956:20995" placeholder="select produ..." />
+                <marker date="1478082769486" expanded="true" signature="22546:22670" placeholder="SELECT produ..." />
+                <marker date="1478082769486" expanded="true" signature="22773:22986" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="22813:22984" placeholder="select id fr..max..." />
+                <marker date="1478082769486" expanded="true" signature="22829:22976" placeholder="select max(i..." />
+                <marker date="1478082769486" expanded="true" signature="24522:24696" placeholder="insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="24744:24768" placeholder="select * fro..ru_product..." />
+                <marker date="1478082769486" expanded="true" signature="27053:27131" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="28345:28477" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="28389:28476" placeholder="select produ..product..." />
+                <marker date="1478082769486" expanded="true" signature="28505:28580" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="28641:28732" placeholder="select * fro..product_log..." />
+                <marker date="1478082769486" expanded="true" signature="28833:28870" placeholder="select * fro..product_log..." />
+                <marker date="1478082769486" expanded="true" signature="28931:28942" placeholder="DROP TABLE m..." />
+                <marker date="1478082769486" expanded="true" signature="29010:29045" placeholder="delete from ..." />
+                <marker date="1478082769486" expanded="true" signature="31182:31226" placeholder="select * fro..Attention_Product..." />
+                <marker date="1478082769486" expanded="true" signature="34896:34940" placeholder="select * fro..Attention_Product..." />
+                <marker date="1478082769486" expanded="true" signature="38697:38729" placeholder="update produ..." />
+                <marker date="1478082769486" expanded="true" signature="38747:38919" placeholder="update produ..." />
+                <marker date="1478082769486" expanded="true" signature="48428:48494" placeholder="CREATE TABLE..IF..." />
+                <marker date="1478082769486" expanded="true" signature="48736:48757" placeholder="SELECT count..missingValue..." />
+                <marker date="1478082769486" expanded="true" signature="49062:49160" placeholder="Insert into ..." />
+                <marker date="1478082769486" expanded="true" signature="49161:49187" placeholder="UPDATE count..." />
+                <marker date="1478082769486" expanded="true" signature="51819:51840" placeholder="SELECT count..missingValue..." />
+                <marker date="1478082769486" expanded="true" signature="54170:54191" placeholder="SELECT count..missingValue..." />
+                <marker date="1478082769486" expanded="true" signature="56444:56465" placeholder="SELECT count..missingValue..." />
+                <marker date="1478082769486" expanded="true" signature="59797:60063" placeholder="INSERT INTO ..." />
+                <marker date="1478082769486" expanded="true" signature="60136:60473" placeholder="INSERT INTO ..." />
+                <marker date="1478082769486" expanded="true" signature="60474:60905" placeholder="UPDATE produ..." />
+                <marker date="1478082769486" expanded="true" signature="60981:61212" placeholder="UPDATE produ..." />
+                <marker date="1478082769486" expanded="true" signature="68530:68635" placeholder="INSERT INTO ..." />
+                <marker date="1478082769486" expanded="true" signature="70183:70282" placeholder="INSERT INTO ..." />
+                <marker date="1478082769486" expanded="true" signature="70283:70333" placeholder="UPDATE conte..." />
+                <marker date="1478082769486" expanded="true" signature="72428:72567" placeholder="UPDATE produ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list_store.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/webpage/front/list_store.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="115" column="46" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="46" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Cache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/common/Cache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="119" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#3756#3757#0" expanded="false" />
+                <element signature="e#3782#3783#0" expanded="false" />
+                <element signature="e#4925#4926#0" expanded="false" />
+                <element signature="e#4956#4957#0" expanded="false" />
+                <element signature="e#6310#6311#0" expanded="false" />
+                <element signature="e#6344#6345#0" expanded="false" />
+                <element signature="e#6518#6519#0" expanded="false" />
+                <element signature="e#6544#6545#0" expanded="false" />
+                <element signature="e#6614#6615#0" expanded="false" />
+                <element signature="e#6640#6641#0" expanded="false" />
+                <element signature="e#6673#6674#0" expanded="false" />
+                <element signature="e#6692#6693#0" expanded="false" />
+                <element signature="e#6758#6759#0" expanded="false" />
+                <element signature="e#6783#6784#0" expanded="false" />
+                <element signature="e#6865#6866#0" expanded="false" />
+                <element signature="e#6903#6904#0" expanded="false" />
+                <element signature="e#6976#6977#0" expanded="false" />
+                <element signature="e#7006#7007#0" expanded="false" />
+                <element signature="e#7231#7232#0" expanded="false" />
+                <element signature="e#7264#7265#0" expanded="false" />
+                <marker date="1478082605481" expanded="true" signature="1762:1809" placeholder="select * fro..caiji_category..." />
+                <marker date="1478082605481" expanded="true" signature="2773:2878" placeholder="SELECT produ..product..." />
+                <marker date="1478082605481" expanded="true" signature="4188:4268" placeholder="SELECT produ..store_product..." />
+                <marker date="1478082605481" expanded="true" signature="5378:5428" placeholder="SELECT produ..commodity_manage..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="luqp" />
+        <option value="376179174@qq.com" />
+        <option value="luqipeng" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/system/timetask/timeTaskList.jsp" />
+        <option value="$PROJECT_DIR$/web/js/buildChart.js" />
+        <option value="$PROJECT_DIR$/resources/spring-mvc-timeTask.xml" />
+        <option value="$PROJECT_DIR$/web/webpage/front/list_workspace.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/front/list_week.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/main/bootstrap_main.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/front/list_group.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/group/entity/MGroupEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/group/service/impl/MGroupServiceImpl.java" />
+        <option value="$PROJECT_DIR$/web/webpage/com/buss/group/mGroup-update.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/entity/Feedbackinfo.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/service/impl/StoreServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/entity/StoreEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/entity/StoreBean.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/entity/FeedbackInfo.java" />
+        <option value="$PROJECT_DIR$/web/webpage/front/list_store.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/attention/entity/MProductEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/attention/service/impl/MProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/wspro/controller/WsProController.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/ws/controller/MWorkspaceController.java" />
+        <option value="$PROJECT_DIR$/web/webpage/com/buss/caiji/store-add.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/com/buss/caiji/store-update.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/com/buss/group/mGroup-add.jsp" />
+        <option value="$PROJECT_DIR$/web/webpage/front/pro_detail.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/compare/service/impl/CommodityManageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/compare/entity/CommodityManageEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/service/impl/StoreProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/controller/StoreProductController.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/compare/controller/CommodityAnalysisController.java" />
+        <option value="$PROJECT_DIR$/web/webpage/front/list_product.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/entity/StoreProductEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/compare/entity/CommodityAnalysisEntity.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/compare/controller/CommodityManageController.java" />
+        <option value="$PROJECT_DIR$/web/webpage/front/store_pro_detail.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/util/Constant.java" />
+        <option value="$PROJECT_DIR$/web/webpage/front/store_detail.jsp" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/util/Tools.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/controller/StoreController.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/front/FrontController.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/common/Cache.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/caiji/controller/SyncController.java" />
+        <option value="$PROJECT_DIR$/src/com/buss/group/controller/MGroupController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="1370" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Spring</id>
+          </State>
+          <State>
+            <id>Spring CoreSpring</id>
+          </State>
+          <State>
+            <id>XMLSpring CoreSpring</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Analysis_local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Analysis_local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Analysis_local" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="F:/git_local" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Workspaces_idea_20\Analysis_local\src\com\buss\caiji\util" />
+      <recent name="F:\Workspaces_idea_20\Analysis_local\web\webpage\com\buss\caiji" />
+      <recent name="F:\Workspaces_idea_20\Analysis_local\web\webpage\front" />
+      <recent name="F:\Workspaces_idea_20\Analysis_local\web\webpage\com\buss" />
+      <recent name="F:\Workspaces_idea_20\Analysis_local\src\com\buss" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.analysis">
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment />
+      <server-settings />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BatchConfigurationType" factoryName="Batch">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="analysis" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 6" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
+      <deployment>
+        <artifact name="Analysis_local:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_Analysis_local_7" />
+        <option name="HTTP_PORT" value="8082" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="53170" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Analysis_local:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.analysis" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5f1e8a1-a279-403c-b46f-bc57371e0eee" name="Default" comment="" />
+      <created>1474352490467</created>
+      <option name="number" value="Default" />
+      <updated>1474352490467</updated>
+      <workItem from="1474352492387" duration="96000" />
+      <workItem from="1474352746956" duration="1097000" />
+      <workItem from="1474353873464" duration="14259000" />
+      <workItem from="1474469291688" duration="5672000" />
+      <workItem from="1474596645203" duration="7782000" />
+      <workItem from="1474702896289" duration="3319000" />
+      <workItem from="1474790304278" duration="3049000" />
+      <workItem from="1474801558330" duration="77000" />
+      <workItem from="1474869567573" duration="27800000" />
+      <workItem from="1474990994290" duration="31801000" />
+      <workItem from="1475157060856" duration="2415000" />
+      <workItem from="1475473396385" duration="598000" />
+      <workItem from="1475559645032" duration="4989000" />
+      <workItem from="1475838303893" duration="1659000" />
+      <workItem from="1476088194972" duration="3102000" />
+      <workItem from="1476237673775" duration="1871000" />
+      <workItem from="1476248039431" duration="661000" />
+      <workItem from="1476287319584" duration="2552000" />
+      <workItem from="1476417839335" duration="786000" />
+      <workItem from="1476421220789" duration="1222000" />
+      <workItem from="1476457833094" duration="1981000" />
+      <workItem from="1476635023298" duration="1182000" />
+      <workItem from="1476668254274" duration="8379000" />
+      <workItem from="1476753883495" duration="4670000" />
+      <workItem from="1476767281167" duration="7880000" />
+      <workItem from="1476841498391" duration="597000" />
+      <workItem from="1476888833749" duration="1399000" />
+      <workItem from="1476945026490" duration="11484000" />
+      <workItem from="1477034594130" duration="2145000" />
+      <workItem from="1477366572185" duration="656000" />
+      <workItem from="1477378502925" duration="5122000" />
+      <workItem from="1477544677726" duration="2702000" />
+      <workItem from="1477625075416" duration="1670000" />
+      <workItem from="1477634441264" duration="1261000" />
+      <workItem from="1478002701112" duration="6425000" />
+      <workItem from="1478080986336" duration="9648000" />
+      <workItem from="1478097410638" duration="2356000" />
+      <workItem from="1478162750898" duration="1126000" />
+    </task>
+    <task id="LOCAL-00001" summary="1wwww">
+      <created>1478137946284</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1478137946284</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="185490000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="0" width="1370" height="735" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.55058044" sideWeight="0.5091603" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41993463" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29236642" sideWeight="0.4869281" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.292868" sideWeight="0.5130719" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29850745" sideWeight="0.4908397" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31674957" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="1" />
+    <MESSAGE value="1wwww" />
+    <option name="LAST_COMMIT_MESSAGE" value="1wwww" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="41" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/entity/StoreBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/ws/entity/MWorkspaceEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/attention/service/impl/MProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="64" selection-start-line="65" selection-start-column="64" selection-end-line="65" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/wspro/entity/WsProEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/wspro/controller/WsProController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="221" column="38" selection-start-line="221" selection-start-column="27" selection-end-line="221" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/ws/controller/MWorkspaceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="188" column="16" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/attention/entity/MProductEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="22" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/group/entity/MGroupEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/SkuProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5995316">
+          <caret line="66" column="4" selection-start-line="66" selection-start-column="4" selection-end-line="67" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/system/function/function.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.964285">
+          <caret line="115" column="15" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-137.07143">
+          <caret line="436" column="54" selection-start-line="436" selection-start-column="41" selection-end-line="436" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/service/impl/CommodityManageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="65" selection-start-line="63" selection-start-column="65" selection-end-line="63" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/sort.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/service/impl/CommodityAnalysisServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="93" column="67" selection-start-line="93" selection-start-column="67" selection-end-line="93" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/com/buss/caiji/store-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6785715">
+          <caret line="180" column="76" selection-start-line="180" selection-start-column="76" selection-end-line="180" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/com/buss/caiji/store-update.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19537275">
+          <caret line="96" column="112" selection-start-line="96" selection-start-column="49" selection-end-line="96" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/service/impl/StoreProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09352518">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list_workspace.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="285" column="53" selection-start-line="285" selection-start-column="53" selection-end-line="285" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list_ru.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list_group.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="124" column="5" selection-start-line="124" selection-start-column="5" selection-end-line="124" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/StoreProductChangeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/controller/StoreProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="472" column="29" selection-start-line="472" selection-start-column="29" selection-end-line="472" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/com/buss/group/mGroup-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="106" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/servlet/InitCashServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_79/src.zip!/java/sql/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/entity/StoreEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/serial.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="1425" selection-start-line="0" selection-start-column="1419" selection-end-line="0" selection-end-column="1425" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jeecgframework/core/common/service/CommonService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="346" column="30" selection-start-line="346" selection-start-column="23" selection-end-line="346" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/service/CommodityAnalysisServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/entity/CommodityManageEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/entity/SkuProductEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2159091">
+          <caret line="31" column="29" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/entity/StoreProductChangeEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="23" selection-start-line="45" selection-start-column="23" selection-end-line="45" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/store_pro_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="235" column="106" selection-start-line="235" selection-start-column="106" selection-end-line="235" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/store_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="91" column="29" selection-start-line="91" selection-start-column="29" selection-end-line="91" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/entity/StoreProductEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33161953">
+          <caret line="254" column="16" selection-start-line="254" selection-start-column="16" selection-end-line="254" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/util/Tools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="899" column="32" selection-start-line="899" selection-start-column="32" selection-end-line="899" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/controller/StoreController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="201" column="36" selection-start-line="201" selection-start-column="36" selection-end-line="201" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list_product.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="398" column="94" selection-start-line="398" selection-start-column="79" selection-end-line="398" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/pro_detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="212" column="0" selection-start-line="212" selection-start-column="0" selection-end-line="212" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/entity/CommodityAnalysisEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="107" column="23" selection-start-line="107" selection-start-column="23" selection-end-line="107" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3204#3205#0" expanded="false" />
+            <element signature="e#3230#3231#0" expanded="false" />
+            <element signature="e#3295#3296#0" expanded="false" />
+            <element signature="e#3334#3335#0" expanded="false" />
+            <element signature="e#3458#3459#0" expanded="false" />
+            <element signature="e#3474#3475#0" expanded="false" />
+            <element signature="e#3508#3509#0" expanded="false" />
+            <element signature="e#3527#3528#0" expanded="false" />
+            <element signature="e#3638#3639#0" expanded="false" />
+            <element signature="e#3656#3657#0" expanded="false" />
+            <element signature="e#3693#3694#0" expanded="false" />
+            <element signature="e#3716#3717#0" expanded="false" />
+            <element signature="e#3869#3870#0" expanded="false" />
+            <element signature="e#3894#3895#0" expanded="false" />
+            <element signature="e#4006#4007#0" expanded="false" />
+            <element signature="e#4033#4034#0" expanded="false" />
+            <element signature="e#4201#4202#0" expanded="false" />
+            <element signature="e#4231#4232#0" expanded="false" />
+            <element signature="e#4358#4359#0" expanded="false" />
+            <element signature="e#4395#4396#0" expanded="false" />
+            <element signature="e#4569#4570#0" expanded="false" />
+            <element signature="e#4601#4602#0" expanded="false" />
+            <element signature="e#4734#4735#0" expanded="false" />
+            <element signature="e#4775#4776#0" expanded="false" />
+            <element signature="e#4943#4944#0" expanded="false" />
+            <element signature="e#4973#4974#0" expanded="false" />
+            <element signature="e#5100#5101#0" expanded="false" />
+            <element signature="e#5137#5138#0" expanded="false" />
+            <element signature="e#5324#5325#0" expanded="false" />
+            <element signature="e#5360#5361#0" expanded="false" />
+            <element signature="e#5505#5506#0" expanded="false" />
+            <element signature="e#5554#5555#0" expanded="false" />
+            <element signature="e#5731#5732#0" expanded="false" />
+            <element signature="e#5764#5765#0" expanded="false" />
+            <element signature="e#5900#5901#0" expanded="false" />
+            <element signature="e#5943#5944#0" expanded="false" />
+            <element signature="e#6114#6115#0" expanded="false" />
+            <element signature="e#6145#6146#0" expanded="false" />
+            <element signature="e#6275#6276#0" expanded="false" />
+            <element signature="e#6314#6315#0" expanded="false" />
+            <element signature="e#6497#6498#0" expanded="false" />
+            <element signature="e#6532#6533#0" expanded="false" />
+            <element signature="e#6674#6675#0" expanded="false" />
+            <element signature="e#6721#6722#0" expanded="false" />
+            <element signature="e#6897#6898#0" expanded="false" />
+            <element signature="e#6930#6931#0" expanded="false" />
+            <element signature="e#7066#7067#0" expanded="false" />
+            <element signature="e#7109#7110#0" expanded="false" />
+            <element signature="e#7264#7265#0" expanded="false" />
+            <element signature="e#7290#7291#0" expanded="false" />
+            <element signature="e#7405#7406#0" expanded="false" />
+            <element signature="e#7434#7435#0" expanded="false" />
+            <element signature="e#7601#7602#0" expanded="false" />
+            <element signature="e#7631#7632#0" expanded="false" />
+            <element signature="e#7758#7759#0" expanded="false" />
+            <element signature="e#7795#7796#0" expanded="false" />
+            <element signature="e#7956#7957#0" expanded="false" />
+            <element signature="e#7984#7985#0" expanded="false" />
+            <element signature="e#8105#8106#0" expanded="false" />
+            <element signature="e#8138#8139#0" expanded="false" />
+            <element signature="e#8302#8303#0" expanded="false" />
+            <element signature="e#8331#8332#0" expanded="false" />
+            <element signature="e#8455#8456#0" expanded="false" />
+            <element signature="e#8490#8491#0" expanded="false" />
+            <element signature="e#8658#8659#0" expanded="false" />
+            <element signature="e#8688#8689#0" expanded="false" />
+            <element signature="e#8815#8816#0" expanded="false" />
+            <element signature="e#8852#8853#0" expanded="false" />
+            <element signature="e#9048#9049#0" expanded="false" />
+            <element signature="e#9087#9088#0" expanded="false" />
+            <element signature="e#9241#9242#0" expanded="false" />
+            <element signature="e#9296#9297#0" expanded="false" />
+            <element signature="e#9495#9496#0" expanded="false" />
+            <element signature="e#9535#9536#0" expanded="false" />
+            <element signature="e#9922#9923#0" expanded="false" />
+            <element signature="e#9954#9955#0" expanded="false" />
+            <element signature="e#10087#10088#0" expanded="false" />
+            <element signature="e#10128#10129#0" expanded="false" />
+            <element signature="e#10310#10311#0" expanded="false" />
+            <element signature="e#10345#10346#0" expanded="false" />
+            <element signature="e#10487#10488#0" expanded="false" />
+            <element signature="e#10534#10535#0" expanded="false" />
+            <element signature="e#10698#10699#0" expanded="false" />
+            <element signature="e#10727#10728#0" expanded="false" />
+            <element signature="e#10851#10852#0" expanded="false" />
+            <element signature="e#10886#10887#0" expanded="false" />
+            <element signature="e#11059#11060#0" expanded="false" />
+            <element signature="e#11091#11092#0" expanded="false" />
+            <element signature="e#11224#11225#0" expanded="false" />
+            <element signature="e#11265#11266#0" expanded="false" />
+            <element signature="e#11423#11424#0" expanded="false" />
+            <element signature="e#11450#11451#0" expanded="false" />
+            <element signature="e#11568#11569#0" expanded="false" />
+            <element signature="e#11599#11600#0" expanded="false" />
+            <element signature="e#11760#11761#0" expanded="false" />
+            <element signature="e#11788#11789#0" expanded="false" />
+            <element signature="e#11909#11910#0" expanded="false" />
+            <element signature="e#11942#11943#0" expanded="false" />
+            <element signature="e#12100#12101#0" expanded="false" />
+            <element signature="e#12127#12128#0" expanded="false" />
+            <element signature="e#12245#12246#0" expanded="false" />
+            <element signature="e#12276#12277#0" expanded="false" />
+            <element signature="e#12462#12463#0" expanded="false" />
+            <element signature="e#12498#12499#0" expanded="false" />
+            <element signature="e#12643#12644#0" expanded="false" />
+            <element signature="e#12692#12693#0" expanded="false" />
+            <element signature="e#12875#12876#0" expanded="false" />
+            <element signature="e#12910#12911#0" expanded="false" />
+            <element signature="e#13052#13053#0" expanded="false" />
+            <element signature="e#13099#13100#0" expanded="false" />
+            <element signature="e#13269#13270#0" expanded="false" />
+            <element signature="e#13300#13301#0" expanded="false" />
+            <element signature="e#13430#13431#0" expanded="false" />
+            <element signature="e#13469#13470#0" expanded="false" />
+            <element signature="e#13639#13640#0" expanded="false" />
+            <element signature="e#13670#13671#0" expanded="false" />
+            <element signature="e#13800#13801#0" expanded="false" />
+            <element signature="e#13839#13840#0" expanded="false" />
+            <element signature="e#13867#13868#0" expanded="false" />
+            <element signature="e#13885#13886#0" expanded="false" />
+            <element signature="e#14047#14048#0" expanded="false" />
+            <element signature="e#14070#14071#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/CommodityManageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="353" column="28" selection-start-line="353" selection-start-column="28" selection-end-line="353" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3179#3180#0" expanded="false" />
+            <element signature="e#3200#3201#0" expanded="false" />
+            <element signature="e#3243#3244#0" expanded="false" />
+            <element signature="e#3272#3273#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/compare/controller/CommodityAnalysisController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="710" column="67" selection-start-line="710" selection-start-column="67" selection-end-line="710" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#4237#4238#0" expanded="false" />
+            <element signature="e#4258#4259#0" expanded="false" />
+            <element signature="e#4301#4302#0" expanded="false" />
+            <element signature="e#4330#4331#0" expanded="false" />
+            <element signature="e#4736#4737#0" expanded="false" />
+            <element signature="e#4794#4795#0" expanded="false" />
+            <marker date="1475154543943" expanded="true" signature="8201:8366" placeholder="select count..commodity_analysis..." />
+            <marker date="1475154543943" expanded="true" signature="8392:11017" placeholder="select this_..commodity_analysis..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/webpage/front/list_store.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="115" column="46" selection-start-line="115" selection-start-column="37" selection-end-line="115" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/front/FrontController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="834" column="0" selection-start-line="834" selection-start-column="0" selection-end-line="834" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#5913#5914#0" expanded="false" />
+            <element signature="e#5934#5935#0" expanded="false" />
+            <element signature="e#5977#5978#0" expanded="false" />
+            <element signature="e#6006#6007#0" expanded="false" />
+            <element signature="e#6138#6139#0" expanded="false" />
+            <element signature="e#6183#6184#0" expanded="false" />
+            <element signature="e#67768#67769#0" expanded="false" />
+            <element signature="e#67823#67824#0" expanded="false" />
+            <marker date="1478053273733" expanded="true" signature="18548:18588" placeholder="select * fro..caiji_category..." />
+            <marker date="1478053273733" expanded="true" signature="18911:18950" placeholder="select * fro..caiji_category..." />
+            <marker date="1478053273733" expanded="true" signature="19278:19317" placeholder="select * fro..caiji_category..." />
+            <marker date="1478053273733" expanded="true" signature="19654:19693" placeholder="select * fro..caiji_category..." />
+            <marker date="1478053273733" expanded="true" signature="43490:43597" placeholder="select * fro..missingValue..." />
+            <marker date="1478053273733" expanded="true" signature="44658:44805" placeholder="SELECT DISTI..." />
+            <marker date="1478053273733" expanded="true" signature="67385:67427" placeholder="select * fro..caiji_category..." />
+            <marker date="1478053273733" expanded="true" signature="84513:84595" placeholder="INSERT INTO ..." />
+            <marker date="1478053273733" expanded="true" signature="84660:84715" placeholder="delete from ..." />
+            <marker date="1478053273733" expanded="true" signature="84749:84838" placeholder="delete from ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/common/Cache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="134" column="12" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="119" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3756#3757#0" expanded="false" />
+            <element signature="e#3782#3783#0" expanded="false" />
+            <element signature="e#4925#4926#0" expanded="false" />
+            <element signature="e#4956#4957#0" expanded="false" />
+            <element signature="e#6310#6311#0" expanded="false" />
+            <element signature="e#6344#6345#0" expanded="false" />
+            <element signature="e#6518#6519#0" expanded="false" />
+            <element signature="e#6544#6545#0" expanded="false" />
+            <element signature="e#6614#6615#0" expanded="false" />
+            <element signature="e#6640#6641#0" expanded="false" />
+            <element signature="e#6673#6674#0" expanded="false" />
+            <element signature="e#6692#6693#0" expanded="false" />
+            <element signature="e#6758#6759#0" expanded="false" />
+            <element signature="e#6783#6784#0" expanded="false" />
+            <element signature="e#6865#6866#0" expanded="false" />
+            <element signature="e#6903#6904#0" expanded="false" />
+            <element signature="e#6976#6977#0" expanded="false" />
+            <element signature="e#7006#7007#0" expanded="false" />
+            <element signature="e#7231#7232#0" expanded="false" />
+            <element signature="e#7264#7265#0" expanded="false" />
+            <marker date="1478082605481" expanded="true" signature="1762:1809" placeholder="select * fro..caiji_category..." />
+            <marker date="1478082605481" expanded="true" signature="2773:2878" placeholder="SELECT produ..product..." />
+            <marker date="1478082605481" expanded="true" signature="4188:4268" placeholder="SELECT produ..store_product..." />
+            <marker date="1478082605481" expanded="true" signature="5378:5428" placeholder="SELECT produ..commodity_manage..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/controller/SyncController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="349" column="63" selection-start-line="349" selection-start-column="63" selection-end-line="349" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2340#2341#0" expanded="false" />
+            <element signature="e#2361#2362#0" expanded="false" />
+            <element signature="e#2404#2405#0" expanded="false" />
+            <element signature="e#2433#2434#0" expanded="false" />
+            <element signature="e#58780#58781#0" expanded="false" />
+            <element signature="e#58821#58822#0" expanded="false" />
+            <marker date="1478082769486" expanded="true" signature="3918:4013" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="4393:4436" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="4393:4449" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="4393:4467" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="4820:4887" placeholder="update store..." />
+            <marker date="1478082769486" expanded="true" signature="6745:6772" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="6974:7227" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="7248:7343" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="7364:7428" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="7734:8002" placeholder="UPDATE store..." />
+            <marker date="1478082769486" expanded="true" signature="14196:14223" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="14196:14236" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="14196:14256" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="14196:14269" placeholder="select * fro..store_product..." />
+            <marker date="1478082769486" expanded="true" signature="14630:14696" placeholder="update store..." />
+            <marker date="1478082769486" expanded="true" signature="15732:15786" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="16027:16149" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="16092:16131" placeholder="select produ..." />
+            <marker date="1478082769486" expanded="true" signature="16404:16660" placeholder="update produ..." />
+            <marker date="1478082769486" expanded="true" signature="16798:17054" placeholder="update produ..." />
+            <marker date="1478082769486" expanded="true" signature="18020:18093" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="18291:18460" placeholder="SELECT ROUND..." />
+            <marker date="1478082769486" expanded="true" signature="20891:21013" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="20956:20995" placeholder="select produ..." />
+            <marker date="1478082769486" expanded="true" signature="22546:22670" placeholder="SELECT produ..." />
+            <marker date="1478082769486" expanded="true" signature="22773:22986" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="22813:22984" placeholder="select id fr..max..." />
+            <marker date="1478082769486" expanded="true" signature="22829:22976" placeholder="select max(i..." />
+            <marker date="1478082769486" expanded="true" signature="24522:24696" placeholder="insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="24744:24768" placeholder="select * fro..ru_product..." />
+            <marker date="1478082769486" expanded="true" signature="27053:27131" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="28345:28477" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="28389:28476" placeholder="select produ..product..." />
+            <marker date="1478082769486" expanded="true" signature="28505:28580" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="28641:28732" placeholder="select * fro..product_log..." />
+            <marker date="1478082769486" expanded="true" signature="28833:28870" placeholder="select * fro..product_log..." />
+            <marker date="1478082769486" expanded="true" signature="28931:28942" placeholder="DROP TABLE m..." />
+            <marker date="1478082769486" expanded="true" signature="29010:29045" placeholder="delete from ..." />
+            <marker date="1478082769486" expanded="true" signature="31182:31226" placeholder="select * fro..Attention_Product..." />
+            <marker date="1478082769486" expanded="true" signature="34896:34940" placeholder="select * fro..Attention_Product..." />
+            <marker date="1478082769486" expanded="true" signature="38697:38729" placeholder="update produ..." />
+            <marker date="1478082769486" expanded="true" signature="38747:38919" placeholder="update produ..." />
+            <marker date="1478082769486" expanded="true" signature="48428:48494" placeholder="CREATE TABLE..IF..." />
+            <marker date="1478082769486" expanded="true" signature="48736:48757" placeholder="SELECT count..missingValue..." />
+            <marker date="1478082769486" expanded="true" signature="49062:49160" placeholder="Insert into ..." />
+            <marker date="1478082769486" expanded="true" signature="49161:49187" placeholder="UPDATE count..." />
+            <marker date="1478082769486" expanded="true" signature="51819:51840" placeholder="SELECT count..missingValue..." />
+            <marker date="1478082769486" expanded="true" signature="54170:54191" placeholder="SELECT count..missingValue..." />
+            <marker date="1478082769486" expanded="true" signature="56444:56465" placeholder="SELECT count..missingValue..." />
+            <marker date="1478082769486" expanded="true" signature="59797:60063" placeholder="INSERT INTO ..." />
+            <marker date="1478082769486" expanded="true" signature="60136:60473" placeholder="INSERT INTO ..." />
+            <marker date="1478082769486" expanded="true" signature="60474:60905" placeholder="UPDATE produ..." />
+            <marker date="1478082769486" expanded="true" signature="60981:61212" placeholder="UPDATE produ..." />
+            <marker date="1478082769486" expanded="true" signature="68530:68635" placeholder="INSERT INTO ..." />
+            <marker date="1478082769486" expanded="true" signature="70183:70282" placeholder="INSERT INTO ..." />
+            <marker date="1478082769486" expanded="true" signature="70283:70333" placeholder="UPDATE conte..." />
+            <marker date="1478082769486" expanded="true" signature="72428:72567" placeholder="UPDATE produ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/group/service/MGroupServiceI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33264887">
+          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jeecgframework/core/common/model/json/AjaxJson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43152454">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="30" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/group/controller/MGroupController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="226" column="34" selection-start-line="226" selection-start-column="34" selection-end-line="226" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#3105#3106#0" expanded="false" />
+            <element signature="e#3126#3127#0" expanded="false" />
+            <element signature="e#3169#3170#0" expanded="false" />
+            <element signature="e#3198#3199#0" expanded="false" />
+            <element signature="e#3340#3341#0" expanded="false" />
+            <element signature="e#3399#3400#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/jeecgframework/web/cgform/engine/jformonetomanytpl.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37051794">
+          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/buss/caiji/util/Constant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34494773">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Analysis_local:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Web</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Analysis_local</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

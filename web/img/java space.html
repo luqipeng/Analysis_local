@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<!-- saved from url=(0247)https://mail.ril.com/owa/#viewmodel=ReadMessageItem&ItemID=AAMkADE1YzA3ODFjLTc2N2YtNDIyZS1iZjVjLTM1NzZkNmU4MzYyYwBGAAAAAABnSwNfS3uAToHbpHzW8W%2BfBwAjbsivIdU7QqZ87K6xaFidAAAAAAENAAAjbsivIdU7QqZ87K6xaFidAAD3SLjQAAA%3D&IsPrintView=1&wid=86&ispopout=1 -->
+<html dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="msapplication-TileImage" content="prem/15.0.1156.9/resources/images/0/owa_browserpinnedtile.png">
+    <meta name="msapplication-TileColor" content="#0072c6">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="google" value="notranslate">
+    <meta name="apple-mobile-web-app-title" content="OWA">
+    
+    <link rel="shortcut icon" href="https://mail.ril.com/owa/prem/15.0.1156.9/resources/images/0/favicon.ico" type="image/x-icon">
+    
+
+    <title>转发: O2p Instance showing down</title>
+
+    <script>
+        var st = new Date();
+        var changeLayoutEnabled = false;
+        var appCachedPage = true;
+        window.dateZero = new Date(0);
+        var scriptStart = ((new Date()) - window.dateZero);
+        window.clientId = '0cd658ea-2363-4083-b793-64717737d25c';
+        var cid = window.clientId;try{if(window.localStorage!=null){var t=window.localStorage.getItem("cid");if(t){cid=t;}}}catch(e){};
+        window.corrId = cid + "_" + (new Date()).getTime();
+        var onunloadbeforeboot = null;
+        window.owaSDState = {};
+        
+        // If we are loading a specifiv view model, we don't need to invoke seesiondata.ashx
+        var isPopOut = window.location.href.indexOf('ispopout=1') > 0;
+
+        if (!isPopOut) {
+            try
+            {
+                // This block should be as high as possible on the page. The reason being, we want to send this request out ASAP.
+                // If possible we would have loved to send chunk of the page till the end of this block and the other chunks would
+                // follow as usual. But since we are using .aspx page, this is not possible.
+                window.owaSDConsumable=false;
+                window.owaSDConsumed = false;
+                sendOwaSDRequest(false);       
+            }
+            catch (ex) {
+                window.owaLastErrorReported = ex;
+                throw ex;
+            }
+        }
+        else {
+            onunloadbeforeboot = function() {
+                callPopOutBootErrorCallback("PopOutClosed");
+            };
+            if (window.attachEvent) {
+                window.attachEvent("onunload", onunloadbeforeboot);
+            }
+            else {
+                window.addEventListener("unload", onunloadbeforeboot, false);
+            }
+        }
+
+       function createOwaSDXMLHttpRequest() {
+            var request = null;
+            try
+            {
+                request = new window.XMLHttpRequest();
+            }
+            catch (e) {
+                // Standard xhr can be disabled on IE8
+                if (window.ActiveXObject) {
+                    request = new window.ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+
+            return request;
+        }
+
+        function sendOwaSDRequest(retryAttempt) {
+            
+            window.owaSD = createOwaSDXMLHttpRequest();
+            window.owaSD.retryAttempt = retryAttempt;
+            window.owaSD.open("POST","sessiondata.ashx" + getSdqp(retryAttempt));
+            window.owaSD.onreadystatechange = sdResponseHandler;
+            window.owaSD.setRequestHeader("X-OWA-CorrelationId", window.corrId);
+            
+            try {
+                if (navigator.userAgent.indexOf("OWASMIME/" > 0)) {
+                    window.owaSD.setRequestHeader("X-OWA-SmimeInstalled", "1");
+                }
+                else if (window.ActiveXObject) {
+                    var smimePlugin = new ActiveXObject("Microsoft.Exchange.Clients.SmimeAX");
+                    window.owaSD.setRequestHeader("X-OWA-SmimeInstalled", "1");
+                    smimePlugin.Dispose();
+                }
+            }
+            catch (e) {
+            }
+
+            window.owaSD.send();
+        }
+
+        function getSdqp(retryAttempt) {
+            var sdqp = "?appcacheclient=1";
+            
+             return sdqp;
+        }
+
+        function sdResponseHandler() {
+            try {
+            
+                if (!window.owaSD) {
+                    return;
+                }
+
+                if (window.owaSD.readyState != 4) {
+                    return;
+                }
+                
+                if (!tryAuthOwaSD()) {
+                    return;
+                }
+
+                window.owaSDState.data = window.owaSD.responseText;
+                completeOwaSD();
+            
+            }
+            catch (ex) {
+                window.owaLastErrorReported = ex;
+                throw ex;
+            }
+        }
+
+        function tryAuthOwaSD() {
+            if (window.owaSD.status == 440 && !isPalEnabled()) {
+                postBootTrace("AuthRedirect");
+
+                // track after postBoot, or else postBoot will clear the tracking.
+                trackRedirectToAuth();
+                redirect('authRedirect', 'true');
+                return false;
+            }
+
+            return true;
+        }
+
+        function completeOwaSD() {
+            window.owaSDdidHandlerExecute = true;
+            window.owaSDReceivedTime = (new Date()).toString();
+
+            if (window.owaSDConsumable && !window.owaSDConsumed) {
+                owastart();
+            }
+        }
+
+        var LT_ANY="Any";var LT_MOUSE="Mouse";var LT_TNARROW="TNarrow";var LT_TWIDE="TWide";var bootTraceUrl,traceTid,traceMguid,layout,bootTraceTimerId,cdnEndPointName,lcver,readingPaneOn,parseEndTimes={},owaRedirecting=!1;function isPalEnabled(){return document.cookie.indexOf("PALEnabled")!=-1||window.location.search.indexOf("palenabled=1")!=-1}var isLocalStorageEnabled=function(){try{if(window.localStorage!=null){window.localStorage.dummy="dummy";window.localStorage.removeItem("dummy");return!0}return!1}catch(n){return!1}}();function getLocalStorageValue(n){return isLocalStorageEnabled?window.localStorage[n]:undefined}function setLocalStorageValue(n,t){if(!isLocalStorageEnabled)return undefined;var i=window.localStorage[n];window.localStorage[n]=t;return i}function deleteLocalStorageValue(n){if(!isLocalStorageEnabled)return undefined;var t=window.localStorage[n];t&&delete window.localStorage[n];return t}function loadSlabSources(n,t,i){n!==""&&n[n.length-1]!="/"&&(n+="/");for(var r=0;r<t.length;r++){var f=t[r];var u=n+f.name;document.write("<script src='"+u+"'></"+"script>")}}function userEnabledOffline(){if(isPalEnabled())return!0;else if(isLocalStorageEnabled){var n=window.localStorage.userEnabledOffline||"";return n!=="false"&&n!=null&&n!=""}}function updateStatusText(n,t){if(!isPopOut){var i=document.getElementById("statusText");if(i){i.className=n;window.setTimeout(function(){i.className==n&&(i.className=n+"Delay")},t*1e3)}}}function includeScripts(n,t,i,r,u,f){for(var s=0;s<t.length;s++){var l=t[s];var h=l.fileName;var o=n+h;var c=document.getElementsByTagName("head")[0];if(!c.querySelector("script[src='"+o+"']"))if(r){var e=document.createElement("script");e.type="text/javascript";e.src=o;e.onload=u;e.onerror=f;c.appendChild(e)}else{document.write("<script src='"+o+"' onerror='onScriptLoadError2(this)'");document.write("></"+"script>");document.write("<script>parseEndTimes['"+getFileName(h)+"'] = ((new Date()) - window.dateZero);</"+"script>")}}}function addCssLink(n){if(document.createStyleSheet)document.createStyleSheet(n);else{var i=document.getElementsByTagName("head")[0];var t=document.createElement("link");t.setAttribute("href",n);t.setAttribute("rel","stylesheet");t.setAttribute("type","text/css");i.appendChild(t)}}function includeStyles(n,t,i,r){var h=window.matchMedia&&window.matchMedia("screen and (-webkit-min-device-pixel-ratio: 2)").matches;n!==""&&n[n.length-1]!="/"&&(n+="/");for(var s=i.length,f=0;f<s;f++){var u=i[f];var c=u.fileName||u.name;var e=n;(u.type=="Sprite"||u.type=="HighResolution")&&(e=t);var o=e+c;u.highResolution||u.type=="HighResolution"?h&&addCssLink(o):addCssLink(o)}}function includeScriptsAndStyles(n,t,i,r,u,f){if(!f)for(var e in n)if(n[e]==n.boot||u){var o=n[e].PackagedSources;o||(o=n[e].Sources);loadSlabSources(t,o,layout);var s=n[e].Styles;includeStyles(i,r,s,layout)}}var appcacheLoaded=!1;(function(){isPalEnabled()||(window.onerror=function(n,t,i){if(!appcacheLoaded)if(window.owaLastErrorReported){window.owaLastErrorReported.message&&(n=window.owaLastErrorReported.message);window.owaLastErrorReported.stack&&(t=window.owaLastErrorReported.stack);window.owaLastErrorReported=null;handleBootError2("ClientError",formatErrorMsg(n,t,i))}else{if(!window.owaErrorState){window.owaErrorState={};window.owaErrorState.owaUncaughtError=[]}window.owaErrorState.owaUncaughtError.push(formatErrorMsg(n,t,i))}})})();function formatErrorMsg(n,t,i){return"exMsg="+n+";file="+t+":"+i}function handleBootError2(n,t,i,r){try{if(owaRedirecting)return;if(appCachedPage&&n=="ScriptLoadError"){postBootTrace(n,t);redirect("aC","1")}else if(!appCachedPage||userEnabledOffline()||isPalEnabled())if(window.location.href.indexOf("bO=1")!=-1||userEnabledOffline()||isPalEnabled()){postBootTrace(n,t);isPopOut&&callPopOutErrorCallback("BootError_"+n);if(!isPalEnabled()&&!userEnabledOffline()){if(t){t=encodeURIComponent(t);t.length>1024&&(t=t.substring(0,1024))}redirectToUrl("/owa/auth/errorfe.aspx?owaError="+n+";"+t+"&owaVer="+i+"&be="+r+"&msg="+window.owaSD.getResponseHeader("X-OWAErrorMessageID"))}}else{postBootTrace(n,t);redirect("bO","1")}else{postBootTrace(n,t);redirect("bO","1")}}catch(u){redirectToUrl("/owa/auth/errorfe.aspx?owaError=Unknown;handle boot error failed&owaVer="+i+"&be="+r)}}function onScriptLoadError2(n){var t="Failed to load script: ";n&&(t+=n.src);handleBootError2("ScriptLoadError",t,null)}function htmlDec(n){var t=document.createElement("div");t.innerHTML=n;return t.innerText||t.textContent}function loadScripts(n,t,i,r,u){for(var f=0;f<n.length;++f)n[f].fileName=n[f].fileName.replace("##LANG##",userLanguageVar).replace("##CULTURE##",userCultureVar).toLowerCase();includeScripts("",n,t,i,r,u)}function loadStyles(n){includeStyles("","",n,layout)}function redirect(n,t,i,r,u,f,e,o){if(!owaRedirecting){var s=addParamsToUrl(window.location.href,n,t);i!==undefined&&(s=addParamsToUrl(s,i,r));u!==undefined&&(s=addParamsToUrl(s,u,f));e!==undefined&&(s=addParamsToUrl(s,e,o));redirectToUrl(s)}}function redirectToUrl(n){if(n!=window.location.href&&!owaRedirecting){setTimeout(function(){window.location.href=n},50);owaRedirecting=!0;detachUnloadEvent()}}function addParamsToUrl(n,t,i){var u=t+"="+i;if(n.indexOf(u)>=0)return n;var r=n.split("#");var f=r.length==1?"":n.substr(n.indexOf("#"));n=r[0].indexOf("?")>=0?r[0]+"&"+u+f:r[0]+"?"+u+f;return n}function isMajorVersionChanged(n,t){if(n==null||t==null)return!0;var r=n.split(".");var u=t.split(".");if(r.length<3||u.length<3)return n!=t;for(var i=0;i<3;++i)if(r[i]!=u[i])return!0;return!1}var measure;var measureTitle;var measureDict={};var indentStr="";var consoleLogger=null;function startMeasure(n){if(consoleLogger){var t=new Date;measureTitle=n;consoleLogger.log("Start Scenario --- "+measureTitle+"@"+(t-measure));measure=t}}function endMeasure(){if(consoleLogger&&measure){var n=new Date;consoleLogger.log("End Scenario --- "+measureTitle+"@"+(n-measure))}}function timeStamp(n){if(consoleLogger&&measure){var t=new Date;consoleLogger.log(indentStr+" Stamp-"+n+"@"+(t-measure))}}function time(n){if(consoleLogger){var t=new Date;measureDict[n]=t;measure?consoleLogger.log(indentStr+"┌─Start-"+n+"@"+(t-measure)):consoleLogger.log(indentStr+"┌─Start-"+n);indentStr=indentStr+"│ "}}function timeEnd(n){if(consoleLogger){var i=measureDict[n];var r=new Date;delete measureDict[n];indentStr=indentStr.substr(2);var t="";i&&(t=r-i);measure?consoleLogger.log(indentStr+"└─End  -"+n+"@"+(r-measure)+" "+t+"ms"):consoleLogger.log(indentStr+"└─End  -"+n+" "+t+"ms")}}function trackRedirectToAuth(){setLocalStorageValue("authRedirect","1")}function trackRedirectToAuthDone(){var n=deleteLocalStorageValue("authRedirect");return n=="1"}function getClientId(){return getLocalStorageValue("cid")}function setClientId(n){getLocalStorageValue("cid")||setLocalStorageValue("cid",n)}function updateLastClientVersion(n){return setLocalStorageValue("LastClientVersion",n)}function getBootOnlineReason(){var n=window.location.href;if(!n)return"9";var t=n.split("#");if(t[0].indexOf("?")>=0)if(n.indexOf("bO=1")>0)return"1";else if(n.indexOf("aC=1")>0)return"2";else if(n.indexOf("vC=0")>0)return"3";else if(n.indexOf("cf=0")>0)return"4";else if(n.indexOf("cdn=1")>0)return"5";return"0"}function isAppCacheSupported(){try{return window.applicationCache!=null}catch(n){return!1}}function getMissingBootFiles(){var t="";try{if(!!window.scriptsLoaded)for(var n in window.scriptsLoaded)t+=!window.scriptsLoaded[n]||window.scriptsLoaded[n]==0?n+";":"";return t?t:"nf"}catch(i){return null}}function postBootTrace(n,t){try{if(owaRedirecting)return;if(isPopOut)return;var a=bootTraceUrl,nt=appCachedPage,tt=trackRedirectToAuthDone();var l=null,c=null,p=null,y=null,v=null,o=null;if(window.owaSD&&window.owaSD.readyState==4){l=window.owaSD.getResponseHeader("X-FEServer");c=window.owaSD.getResponseHeader("X-BEServer");p=window.owaSD.getResponseHeader("X-CalculatedBETarget");v=window.owaSD.getResponseHeader("X-OWA-Version");y=window.owaSD.status;o=window.owaSD.getResponseHeader("X-MSEdge-Ref")?"1":"0"}perfData=getPerformanceNumbers(nt);var d=getBootOnlineReason();var i="?cId="+getClientId()+"&msg="+n+"&tg="+traceTid+"&MDB="+traceMguid+"&sdCoId="+window.corrId+"&sds="+y+"&fe="+l+"&be="+c+"&cbe="+p+"&cver="+sver+"&sdver="+v+"&rand="+(new Date-window.dateZero)+"&rpo="+(readingPaneOn?"1":"0")+"&off="+(userEnabledOffline()?"1":"0")+"&pal="+(isPalEnabled()?"1":"0")+"&rfe="+d+"&te="+o+"&"+perfData[0];tt&&(i+="&backFromAuth=true");if(isLocalStorageEnabled){var g=window.localStorage.BootVer;var ut=window.localStorage.InstalledCacheVer;var ft=window.localStorage.InstallAttemptCacheVer;var it=window.localStorage.UICulture;var rt=window.localStorage.UITheme;var k=window.localStorage.DownloadedCacheCount;var w=window.localStorage.LastHostName;var b=window.location.hostname;i+="&lbv="+g+"&icv="+ut+"&iacr="+ft+"&lcver="+lcver+"&accu="+it+"&acth="+rt+"&acdc="+k+"&lhn="+w+"&chn="+b}i+="&acs="+(isAppCacheSupported()?"1":0);i+="&mf="+getMissingBootFiles();if(window.owaErrorState&&window.owaErrorState.owaUncaughtError&&window.owaErrorState.owaUncaughtError.length>0){for(var h="",u=0;u<window.owaErrorState.owaUncaughtError.length;u++)h+=window.owaErrorState.owaUncaughtError[u]+";";i+="&ue="+encodeURIComponent(h)}var r=window.location.href;r&&(r=encodeURIComponent(r));var s=new XMLHttpRequest;var e=(r?"&refUrl="+r:"")+(t?"&Err="+t.replace(/&/g,"%26").replace(/=/g,"%3d"):"");perfData[1].length>0&&(e="&"+perfData[1]+e);s.open("POST","plt1.ashx"+i,!0);s.send(e);if(a){i=i+(r?"&refUrl="+r:"")+(t?"&Err="+encodeURIComponent(t):"");i.length>2e3&&(i=i.substring(0,2e3));var f=document.getElementById("traceFrame");if(f){f.src=a+i;bootTraceTimerId!=null&&window.clearTimeout(bootTraceTimerId);bootTraceTimerId=window.setTimeout(function(){bootTraceTimerId=null;f.src="about:blank"},3e4)}}}catch(et){}}function getPerformanceNumbers(n){var t=window.performance;typeof t!="undefined"&&typeof window.webkitPerformance!="undefined"&&(t=window.webkitPerformance);var r=[];r.push((n?"ALT=":"PLT=")+getPerformanceTimings(t?t.timing:null));var i=[];getResourceEntries(t,i);return[r.join("&"),i.join("&")]}var renderStartTime=0;function setStartRenderTime(){renderStartTime=new Date-window.dateZero}var compositeUsrTime=0;function setCompositeUsrTime(){compositeUsrTime=new Date-window.dateZero}function getPerformanceTimings(n){var t=[],i=scriptStart;if(n){i=n.navigationStart;if(n.unloadEventStart){t.push("uES");t.push(n.unloadEventStart-i|0)}if(n.unloadEventEnd){t.push("uEE");t.push(n.unloadEventEnd-i|0)}i=fillTimingValues(n,i,t);if(parseEndTimes.allDone){t.push("pE");t.push(parseEndTimes.allDone-i|0)}if(renderStartTime){t.push("rSt");t.push(renderStartTime-i|0)}if(compositeUsrTime){t.push("cUsr");t.push(compositeUsrTime-i|0)}t.push("now");t.push(new Date-window.dateZero-i)}else{if(renderStartTime){t.push("rStNoTim");t.push(renderStartTime-i|0)}t.push("nowNoTim");t.push(new Date-window.dateZero-i)}return t.join(",")}function getResourceEntries(n,t){if(!n||!n.getEntries&&!n.webkitGetEntries)return null;for(var e=n.getEntries?n.getEntries():n.webkitGetEntries(),r=0;r<e.length;r++){var i=e[r];if(i.name.lastIndexOf(".js")>0||i.name.lastIndexOf(".ashx")>0||i.name.lastIndexOf(".png")>0||i.name.lastIndexOf(".gif")>0||i.name.lastIndexOf(".css")>0||i.name.lastIndexOf(".eot")>0||i.name.lastIndexOf(".ttf")>0||i.name.lastIndexOf(".htm")>0||i.name.lastIndexOf(".woff")>0){var f="Res="+getFileName(i.name)+",tim="+getResourceTiming(i);var u=getFileName(i.name);parseEndTimes[u]&&(f+=",pE,"+(parseEndTimes[u]-n.timing.fetchStart));t.push(f)}}}function getResourceTiming(n){var t=[];var i=n.startTime|0;t.push("st");t.push(i);fillTimingValues(n,i,t);return t.join(",")}function getFileName(n){var u=Math.max(n.lastIndexOf("/"),n.lastIndexOf("\\"));var i=n.indexOf("?");var r=n.indexOf("#");var t=-1;t=i==-1||r==-1?Math.max(i,r):Math.min(i,r);t=t==-1?n.length:t;return n.substring(u+1,t)}function fillTimingValues(n,t,i){if(n.redirectStart){i.push("reds");i.push(n.redirectStart-t|0)}if(n.redirectEnd){i.push("redE");i.push(n.redirectEnd-t|0)}if(n.fetchStart){i.push("fS");i.push(n.fetchStart-t|0);t=n.fetchStart}if(n.domainLookupStart){i.push("dLS");i.push(n.domainLookupStart-t|0)}if(n.domainLookupEnd){i.push("dLE");i.push(n.domainLookupEnd-t|0)}if(n.connectStart){i.push("cS");i.push(n.connectStart-t|0)}if(n.connectEnd){i.push("cE");i.push(n.connectEnd-t|0)}if(n.secureConnectionStart){i.push("sCS");i.push(n.secureConnectionStart-t|0)}if(n.requestStart){i.push("reqS");i.push(n.requestStart-t|0)}if(n.responseStart){i.push("resS");i.push(n.responseStart-t|0)}if(n.responseEnd){i.push("resE");i.push(n.responseEnd-t|0)}if(n.domLoading){i.push("domL");i.push(n.domLoading-t|0)}if(n.domContentLoadedEventStart){i.push("domCLES");i.push(n.domContentLoadedEventStart-t|0)}if(n.domContentLoadedEventEnd){i.push("domCLEE");i.push(n.domContentLoadedEventEnd-t|0)}if(n.domComplete){i.push("domC");i.push(n.domComplete-t|0)}if(n.loadEventStart){i.push("lES");i.push(n.loadEventStart-t|0)}if(n.loadEventEnd){i.push("lEE");i.push(n.loadEventEnd-t|0)}return t}function callPopOutErrorCallback(n){try{var t=getParameterByName("wid");window.opener.popOutErrorCallbacks[t](n);cleanupErrorCallback()}catch(i){}}function cleanupErrorCallback(){try{detachUnloadEvent();var n=getParameterByName("wid");window.opener.popOutErrorCallbacks[n]=null}catch(t){}}function getParameterByName(n){var i=new RegExp("[\\#&]"+n+"=([^&#]*)");var t=i.exec(location.hash);return t==null?null:decodeURIComponent(t[1])}function detachUnloadEvent(){try{onunloadbeforeboot&&(window.detachEvent?window.detachEvent("onunload",onunloadbeforeboot):window.removeEventListener("unload",onunloadbeforeboot,!1))}catch(n){}}
+    </script>
+      
+        <style>
+        
+
+        @font-face {
+            font-family: 'webfontPreload';
+            src: url('prem/15.0.1156.9/resources/styles/office365icons.eot?#iefix') format('embedded-opentype'),
+                 url('prem/15.0.1156.9/resources/styles/office365icons.woff') format('woff'),
+                 url('prem/15.0.1156.9/resources/styles/office365icons.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+      </style>
+
+    
+            <style>
+                .image-headerbgmain-png
+                {
+                    background:url('prem/15.0.1156.9/resources/themes/base/images/0/headerbgmain.png');
+                    width: 1px;
+                    height: 1px;
+                }
+
+                .image-headerbgright-png
+                {
+                    background:url('prem/15.0.1156.9/resources/themes/base/images/0/headerbgright.png');
+                    width: 1px;
+                    height: 1px;
+                }
+
+                .image-headerbgleft-png
+                {
+                    background:url('prem/15.0.1156.9/resources/themes/base/images/0/headerbgleft.png');
+                    width: 1px;
+                    height: 1px;
+                }
+            </style>
+        <style>/*---------------------------------------------
+    NativeScrollRegion styles
+----------------------------------------------*/
+
+.customScrollBar::-webkit-scrollbar
+{
+    height: 18px;
+    width: 18px;
+}
+
+.customScrollBar::-webkit-scrollbar:disabled
+{
+    display:none;
+}
+
+.customScrollBar::-webkit-scrollbar-button   
+{
+    background-color: #fff;
+    background-repeat: no-repeat;
+    cursor:pointer;
+}
+
+.customScrollBar::-webkit-scrollbar-button:horizontal:increment,
+.customScrollBar::-webkit-scrollbar-button:horizontal:decrement,
+.customScrollBar::-webkit-scrollbar-button:horizontal:increment:hover,
+.customScrollBar::-webkit-scrollbar-button:horizontal:decrement:hover,
+.customScrollBar::-webkit-scrollbar-button:vertical:increment,
+.customScrollBar::-webkit-scrollbar-button:vertical:decrement,
+.customScrollBar::-webkit-scrollbar-button:vertical:increment:hover,
+.customScrollBar::-webkit-scrollbar-button:vertical:decrement:hover
+{
+    background-position:center;
+    height: 18px;
+    width: 18px;
+}
+
+.customScrollBarLight::-webkit-scrollbar-button 
+{
+    display: none;
+}
+
+.customScrollBar::-webkit-scrollbar-track
+{
+    background-color: #fff;
+}
+
+.customScrollBarLight::-webkit-scrollbar-track
+{
+    background-color: #0072C6;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb
+{
+    border-radius: 9px;
+    border: solid 6px #fff;
+    background-color: #c8c8c8;
+}
+
+.customScrollBarLight::-webkit-scrollbar-thumb
+{
+    border-color: #0072C6;
+    background-color: #95B1C1;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb:vertical
+{
+    min-height:50px;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb:horizontal
+{
+    min-width:50px;
+}
+
+.customScrollBar::-webkit-scrollbar-thumb:hover
+{
+    border-radius: 9px;
+    border: solid 6px #fff;
+    background-color: #98A3A6;
+}
+
+.customScrollBar::-webkit-scrollbar-corner
+{
+    background-color: #fff;
+}
+
+.nativeScrollInertia
+{
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 
+    This rule is stated here, rather than in the stylesheet 
+    generated by CssSpritesGen2, because we want this to be 
+    the default while allowing templates to override to 
+    display as a full block element.
+*/
+.csimg 
+{
+    display: inline-block;
+    overflow: hidden;
+}
+
+/*-------------------------------------
+    Firefox button fix (removes extra
+    button padding) 
+--------------------------------------*/
+button::-moz-focus-inner
+{ 
+    border-width: 0;
+    padding: 0;
+}
+
+/*-------------------------------------
+    TextBox styles
+--------------------------------------*/
+.textbox
+{
+    border-width: 1px;
+    border-style: solid;
+    font-size: 12px;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    -webkit-appearance:none;
+    height: 14px;
+    background-color: #fff;
+}
+
+.mouse .textbox 
+{
+    padding: 3px 5px;
+}
+
+.twide .textbox, .tnarrow .textbox
+{
+    padding: 7px 5px;
+    height: 22px;
+}
+
+.textbox:hover
+{
+    border-color:#666666;
+    background-color: #fff;
+}
+
+.placeholderText
+{
+    font: 12px 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+    color: #a6a6a6;
+}
+
+/*-------------------------------------
+    Text area styles
+-------------------------------------*/
+.twide .textarea, .tnarrow .textarea, .textarea
+{
+    padding: 10px;
+}
+
+.mouse .textarea:hover
+{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+/*---------------------------------------------
+    Button styles
+----------------------------------------------*/
+
+.o365button
+{
+    background: transparent;
+    border-width: 0px;
+    padding: 0px;
+    cursor: pointer !important;
+}
+
+.o365button:disabled
+{
+    cursor: default !important;
+}
+
+.o365buttonOutlined
+{
+    padding-right: 11px;
+    padding-left: 11px;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+    border-width: 1px;
+    border-style: solid;
+}
+
+.o365buttonOutlined .o365buttonLabel
+{
+    display:inline-block;
+}
+
+.o365buttonOutlined
+{
+    height: 22px;
+}
+
+.o365buttonOutlined .o365buttonLabel
+{
+    height: 18px;
+}
+
+/*-------------------------------------
+    Checkbox styles
+--------------------------------------*/
+
+.checkbox
+{
+    border-style:none;
+    cursor:pointer;
+    vertical-align:middle;
+}
+
+/*---------------------------------------------
+    Popup styles
+----------------------------------------------*/
+.popupShadow 
+{
+    box-shadow: 0 0 20px rgba(0,0,0,.4);
+    border: 1px solid #eaeaea;
+}
+
+.contextMenuDropShadow 
+{
+    box-shadow: 0 0 7px rgba(0,0,0,.4);
+    border: 1px solid #eaeaea;
+}
+
+.modalBackground
+{
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    opacity: 0.65;
+    filter: Alpha(opacity=65); /* Internet Explorer */
+}
+
+.clearModalBackground
+{
+    /* We use a white background with opacity 0 rather than background-color transparent so that
+       the browser won't allow the user click/touch to propagate to the control beneath it. */
+    background-color: #fff;    /* UX Approved */
+    opacity: 0;
+    filter: Alpha(opacity=0); /* Internet Explorer */
+    height: 100%;
+    width: 100%;
+}
+
+/*---------------------------------------------
+    Context Menu styles
+----------------------------------------------*/
+
+.contextMenuPopup 
+{
+    background-color: #fff;
+}
+
+.tnarrow .contextMenuPopup
+{
+    height: 100%;
+}
+
+
+/*---------------------------------------------
+    Focus Highlight Behavior styles
+----------------------------------------------*/
+.removeFocusOutline *:focus
+{
+    outline: none;
+}
+
+.addFocusOutline button:focus 
+{
+    outline: dotted 1px;
+}
+
+/* transparent defaults */
+.border-color-transparent 
+{
+    border-color: transparent;
+}
+
+/*-------------------------------------
+    DockPanel styles
+--------------------------------------*/
+.vResize, .hResize
+{
+    z-index: 1000;
+}
+
+.hResize, .hResizeCursor *
+{
+    cursor: row-resize !important;
+}
+
+.vResize, .vResizeCursor *
+{
+    cursor: col-resize !important;
+}
+
+.vResizing, .hResizing
+{
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity: 0.6;
+    border: solid 1px #fff;
+}
+
+.vResizing
+{
+    border-width: 0px 1px;
+}
+
+.hResizing
+{
+    border-width: 1px 0px;
+}
+</style>
+        <style>/*Font Classes*/
+.ms-font-su
+{
+    font-family: 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI WPC Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+    font-size: 42px;
+    color: #333333;
+}
+
+.ms-font-xxl
+{
+    font-family: 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI WPC Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+    font-size: 28px;
+    color: #333333;
+}
+
+.twide .ms-font-xxl, .tnarrow .ms-font-xxl
+{
+    font-size: 30px;
+}
+
+.ms-font-xl
+{
+    font-family: 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI WPC Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+    font-size: 21px;
+    color: #333333;
+}
+
+.twide .ms-font-xl, .tnarrow .ms-font-xl
+{
+    font-size: 22px;
+}
+
+.ms-font-l
+{
+    font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+    font-size: 17px;
+    color: #333333;
+}
+
+.twide .ms-font-l, .tnarrow .ms-font-l
+{
+    font-size: 18px;
+}
+
+.ms-font-m
+{
+    font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    color: #333333;
+}
+
+.twide .ms-font-m, .tnarrow .ms-font-m
+{
+    font-size: 15px;
+}
+
+.ms-font-s
+{
+    font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    color: #333333;
+}
+
+.twide .ms-font-s, .tnarrow .ms-font-s
+{
+    font-size: 13px;
+}
+
+.ms-font-xs
+{
+    font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    color: #333333;
+}
+
+.twide .ms-font-xs, .tnarrow .ms-font-xs
+{
+    font-size: 12px;
+}
+
+.ms-font-mi
+{
+    font-weight: bold;
+    font-family: 'Segoe UI Semibold', 'Segoe WP Semibold', 'Segoe UI WPC Semibold', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+    font-size: 10px;
+    color: #333333;
+}
+
+.twide .ms-font-mi, .tnarrow .ms-font-mi
+{
+    font-size: 11px;
+}
+
+/*Font Weights*/
+.ms-font-weight-light
+{
+    font-family: 'Segoe UI Light', 'Segoe WP Light', 'Segoe UI WPC Semilight', 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+}
+
+.ms-font-weight-semilight
+{
+    font-family: 'Segoe UI Semilight', 'Segoe WP Semilight', 'Segoe UI WPC Semilight', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+}
+
+.ms-font-weight-regular
+{
+    font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+}
+
+.ms-font-weight-semibold
+{
+    font-weight: bold;
+    font-family: 'Segoe UI Semibold', 'Segoe WP Semibold', 'Segoe UI WPC Semibold', 'Segoe UI', 'Segoe WP', Tahoma, Arial, sans-serif;
+}</style>
+        <style>/*Background Colors*/
+.ms-bg-color-themeDark,
+.ms-bgc-td,
+.ms-bg-color-themeDark-hover:hover,
+.ms-bgc-td-h:hover
+{
+    background-color: #005A9E;
+}
+
+.ms-bg-color-themeDarker,
+.ms-bgc-tdr,
+.ms-bg-color-themeDarker-hover:hover,
+.ms-bgc-tdr-h:hover
+{
+    background-color: #004578;
+}
+
+.ms-bg-color-themePrimary,
+.ms-bgc-tp,
+.ms-bg-color-themePrimary-hover:hover,
+.ms-bgc-tp-h:hover
+{
+    background-color: #0072C6;
+}
+
+.ms-bg-color-themeSecondary,
+.ms-bgc-ts,
+.ms-bg-color-themeSecondary-hover:hover,
+.ms-bgc-ts-h:hover
+{
+    background-color: #2A8DD4;
+}
+
+.ms-bg-color-themeTertiary,
+.ms-bgc-tt,
+.ms-bg-color-themeTertiary-hover:hover,
+.ms-bgc-tt-h:hover
+{
+    background-color: #92C0E0;
+}
+
+.ms-bg-color-themeLight,
+.ms-bgc-tl,
+.ms-bg-color-themeLight-hover:hover,
+.ms-bgc-tl-h:hover
+{
+    background-color: #CDE6F7;
+}
+
+.ms-bg-color-themeLighter,
+.ms-bgc-tlr,
+.ms-bg-color-themeLighter-hover:hover,
+.ms-bgc-tlr-h:hover
+{
+    background-color: #E6F2FA;
+}
+
+/*Border Colors*/
+.ms-border-color-themeDark,
+.ms-bcl-td,
+.ms-border-color-themeDark-hover:hover,
+.ms-bcl-td-h:hover
+{
+    border-color: #005A9E;
+}
+
+.ms-border-color-themeDarker,
+.ms-bcl-tdr,
+.ms-border-color-themeDarker-hover:hover,
+.ms-bcl-tdr-h:hover
+{
+    border-color: #004578;
+}
+
+.ms-border-color-themePrimary,
+.ms-bcl-tp,
+.ms-border-color-themePrimary-hover:hover,
+.ms-bcl-tp-h:hover
+{
+    border-color: #0072C6;
+}
+
+.ms-border-color-themeSecondary,
+.ms-bcl-ts,
+.ms-border-color-themeSecondary-hover:hover,
+.ms-bcl-ts-h:hover
+{
+    border-color: #2A8DD4;
+}
+
+.ms-border-color-themeTertiary,
+.ms-bcl-tt,
+.ms-border-color-themeTertiary-hover:hover,
+.ms-bcl-tt-h:hover
+{
+    border-color: #92C0E0;
+}
+
+.ms-border-color-themeLight,
+.ms-bcl-tl,
+.ms-border-color-themeLight-hover:hover,
+.ms-bcl-tl-h:hover
+{
+    border-color: #CDE6F7;
+}
+
+.ms-border-color-themeLighter,
+.ms-bcl-tlr,
+.ms-border-color-themeLighter-hover:hover,
+.ms-bcl-tlr-h:hover
+{
+    border-color: #E6F2FA;
+}
+
+/*Foreground colors*/
+.ms-font-color-themeDark,
+.ms-fcl-td,
+.ms-font-color-themeDark-hover:hover,
+.ms-fcl-td-h:hover
+{
+    color: #005A9E;
+}
+
+.ms-font-color-themeDarker,
+.ms-fcl-tdr,
+.ms-font-color-themeDarker-hover:hover,
+.ms-fcl-tdr-h:hover
+{
+    color: #004578;
+}
+
+.ms-font-color-themePrimary,
+.ms-fcl-tp,
+.ms-font-color-themePrimary-hover:hover,
+.ms-fcl-tp-h:hover
+{
+    color: #0072C6;
+}
+
+.ms-font-color-themeSecondary,
+.ms-fcl-ts,
+.ms-font-color-themeSecondary-hover:hover,
+.ms-fcl-ts-h:hover
+{
+    color: #2A8DD4;
+}
+
+.ms-font-color-themeTertiary,
+.ms-fcl-tt,
+.ms-font-color-themeTertiary-hover:hover,
+.ms-fcl-tt-h:hover
+{
+    color: #92C0E0;
+}
+
+.ms-font-color-themeLight,
+.ms-fcl-tl,
+.ms-font-color-themeLight-hover:hover,
+.ms-fcl-tl-h:hover
+{
+    color: #CDE6F7;
+}
+
+.ms-font-color-themeLighter,
+.ms-fcl-tlr,
+.ms-font-color-themeLighter-hover:hover,
+.ms-fcl-tlr-h:hover
+{
+    color: #E6F2FA;
+}
+
+/* Suite overrides */
+.o365cs-topnavBGColor
+{
+    background-color: #0072C6;
+}
+.o365cs-topnavLinkBackground
+{
+    background-color: #0072C6;
+    background-color: rgba(0,114,198,.8);
+}
+.o365cs-topnavText
+{
+    color: #FFFFFF;
+}
+.o365cs-o365logo
+{
+    color: #FFFFFF;
+}
+.o365cs-navMenuButton
+{
+    color: #FFFFFF;
+}</style>
+        <style>/*Background Colors*/
+.ms-bg-color-black,
+.ms-bgc-b,
+.ms-bg-color-black-hover:hover,
+.ms-bgc-b-h:hover
+{
+    background-color: #000;
+}
+
+.ms-bg-color-neutralDark,
+.ms-bgc-nd,
+.ms-bg-color-neutralDark-hover:hover,
+.ms-bgc-nd-h:hover
+{
+    background-color: #212121;
+}
+
+.ms-bg-color-neutralPrimary,
+.ms-bgc-np,
+.ms-bg-color-neutralPrimary-hover:hover,
+.ms-bgc-np-h:hover
+{
+    background-color: #333;
+}
+
+.ms-bg-color-neutralSecondary,
+.ms-bgc-ns,
+.ms-bg-color-neutralSecondary-hover:hover,
+.ms-bgc-ns-h:hover
+{
+    background-color: #666;
+}
+
+.ms-bg-color-neutralSecondaryAlt,
+.ms-bgc-nsa,
+.ms-bg-color-neutralSecondaryAlt-hover:hover,
+.ms-bgc-nsa-h:hover
+{
+    background-color: #767676;
+}
+
+.ms-bg-color-neutralTertiary,
+.ms-bgc-nt,
+.ms-bg-color-neutralTertiary-hover:hover,
+.ms-bgc-nt-h:hover
+{
+    background-color: #a6a6a6;
+}
+
+.ms-bg-color-neutralTertiaryAlt,
+.ms-bgc-nta,
+.ms-bg-color-neutralTertiaryAlt-hover:hover,
+.ms-bgc-nta-h:hover
+{
+    background-color: #c8c8c8;
+}
+
+.ms-bg-color-neutralLight,
+.ms-bgc-nl,
+.ms-bg-color-neutralLight-hover:hover,
+.ms-bgc-nl-h:hover
+{
+    background-color: #eaeaea;
+}
+
+.ms-bg-color-neutralLighter,
+.ms-bgc-nlr,
+.ms-bg-color-neutralLighter-hover:hover,
+.ms-bgc-nlr-h:hover
+{
+    background-color: #f4f4f4;
+}
+
+.ms-bg-color-white,
+.ms-bgc-w,
+.ms-bg-color-white-hover:hover,
+.ms-bgc-w-h:hover
+{
+    background-color: #fff;
+}
+
+/*Border Colors*/
+.ms-border-color-black,
+.ms-bcl-b,
+.ms-border-color-black-hover:hover,
+.ms-bcl-b-h:hover
+{
+    border-color: #000;
+}
+
+.ms-border-color-neutralDark,
+.ms-bcl-nd,
+.ms-border-color-neutralDark-hover:hover,
+.ms-bcl-nd-h:hover
+{
+    border-color: #212121;
+}
+
+.ms-border-color-neutralPrimary,
+.ms-bcl-np,
+.ms-border-color-neutralPrimary-hover:hover,
+.ms-bcl-np-h:hover
+{
+    border-color: #333;
+}
+
+.ms-border-color-neutralSecondary,
+.ms-bcl-ns,
+.ms-border-color-neutralSecondary-hover:hover,
+.ms-bcl-ns-h:hover
+{
+    border-color: #666;
+}
+
+.ms-border-color-neutralSecondaryAlt,
+.ms-bcl-nsa,
+.ms-border-color-neutralSecondaryAlt-hover:hover,
+.ms-bcl-nsa-h:hover
+{
+    border-color: #767676;
+}
+
+.ms-border-color-neutralTertiary,
+.ms-bcl-nt,
+.ms-border-color-neutralTertiary-hover:hover,
+.ms-bcl-nt-h:hover
+{
+    border-color: #a6a6a6;
+}
+
+.ms-border-color-neutralTertiaryAlt,
+.ms-bcl-nta,
+.ms-border-color-neutralTertiaryAlt-hover:hover,
+.ms-bcl-nta-h:hover
+{
+    border-color: #c8c8c8;
+}
+
+.ms-border-color-neutralLight,
+.ms-bcl-nl,
+.ms-border-color-neutralLight-hover:hover,
+.ms-bcl-nl-h:hover
+{
+    border-color: #eaeaea;
+}
+
+.ms-border-color-neutralLighter,
+.ms-bcl-nlr,
+.ms-border-color-neutralLighter-hover:hover,
+.ms-bcl-nlr-h:hover
+{
+    border-color: #f4f4f4;
+}
+
+.ms-border-color-white,
+.ms-bcl-w,
+.ms-border-color-white-hover:hover,
+.ms-bcl-w-h:hover
+{
+    border-color: #fff;
+}
+
+/*Foreground colors*/
+.ms-font-color-black,
+.ms-fcl-b,
+.ms-font-color-black-hover:hover,
+.ms-fcl-b-h:hover
+{
+    color: #000;
+}
+
+.ms-font-color-neutralDark,
+.ms-fcl-nd,
+.ms-font-color-neutralDark-hover:hover,
+.ms-fcl-nd-h:hover
+{
+    color: #212121;
+}
+
+.ms-font-color-neutralPrimary,
+.ms-fcl-np,
+.ms-font-color-neutralPrimary-hover:hover,
+.ms-fcl-np-h:hover
+{
+    color: #333;
+}
+
+.ms-font-color-neutralSecondary,
+.ms-fcl-ns,
+.ms-font-color-neutralSecondary-hover:hover,
+.ms-fcl-ns-h:hover
+{
+    color: #666;
+}
+
+.ms-font-color-neutralSecondaryAlt,
+.ms-fcl-nsa,
+.ms-font-color-neutralSecondaryAlt-hover:hover,
+.ms-fcl-nsa-h:hover
+{
+    color: #767676;
+}
+
+.ms-font-color-neutralTertiary,
+.ms-fcl-nt,
+.ms-font-color-neutralTertiary-hover:hover,
+.ms-fcl-nt-h:hover
+{
+    color: #a6a6a6;
+}
+
+.ms-font-color-neutralTertiaryAlt,
+.ms-fcl-nta,
+.ms-font-color-neutralTertiaryAlt-hover:hover,
+.ms-fcl-nta-h:hover
+{
+    color: #c8c8c8;
+}
+
+.ms-font-color-neutralLight,
+.ms-fcl-nl,
+.ms-font-color-neutralLight-hover:hover,
+.ms-fcl-nl-h:hover
+{
+    color: #eaeaea;
+}
+
+.ms-font-color-neutralLighter,
+.ms-fcl-nlr,
+.ms-font-color-neutralLighter-hover:hover,
+.ms-fcl-nlr-h:hover
+{
+    color: #f4f4f4;
+}
+
+.ms-font-color-white,
+.ms-fcl-w,
+.ms-font-color-white-hover:hover,
+.ms-fcl-w-h:hover
+{
+    color: #fff;
+}</style>
+        <style>/*--------------------------------------------------------
+  OWA styles, font and color classes that are only used within OWA
+---------------------------------------------------------*/
+.owa-font-compose
+{
+    font-family: Calibri,Arial,Helvetica,sans-serif;
+}
+.owa-bg-color-neutral-orange
+{
+    background-color: #D82300;
+}
+.owa-bg-color-neutral-red
+{
+    background-color: #A80F22;
+}
+.owa-bg-color-neutral-yellow
+{
+    background-color: #FFEE94;
+}
+.owa-bg-color-neutral-green
+{
+    background-color: #5DD255;
+}
+.owa-bg-color-cal-green
+{
+    background-color: #68A490;
+}
+.owa-bg-color-cal-purple
+{
+    background-color: #976CBE;
+}
+.owa-border-color-neutral-orange
+{
+    border-color: #D82300;
+}
+.owa-border-color-neutral-red
+{
+    border-color: #A80F22;
+}
+.owa-border-color-neutral-yellow
+{
+    border-color: #FFEE94;
+}
+.owa-border-color-neutral-green
+{
+    border-color: #5DD255;
+}
+.owa-border-color-cal-green
+{
+    border-color: #68A490;
+}
+.owa-border-color-cal-purple
+{
+    border-color: #976CBE;
+}
+.owa-color-neutral-orange
+{
+    color: #D82300;
+}
+.owa-color-neutral-red
+{
+    color: #A80F22;
+}
+.owa-color-neutral-yellow
+{
+    color: #FFEE94;
+}
+.owa-color-neutral-green
+{
+    color: #5DD255;
+}
+.owa-color-cal-green
+{
+    color: #68A490;
+}
+.owa-color-cal-green-hover
+{
+    color: #377353;
+}
+.owa-color-cal-purple
+{
+    color: #976CBE;
+}
+.owa-color-cal-purple-hover
+{
+    color: #67397B;
+}
+.owa-color-cal-blue
+{
+    color: #71C2EB;
+}
+.owa-color-cal-brown
+{
+    color: #AB9B81;
+}
+.owa-color-cal-green-alt
+{
+    color: #A9C47A;
+}
+.owa-color-cal-grey
+{
+    color: #999B9C;
+}
+.owa-color-cal-orange
+{
+    color: #E6975C;
+}
+.owa-color-cal-pink
+{
+    color: #CA6AAB;
+}
+.owa-color-cal-red
+{
+    color: #D57272;
+}
+.owa-color-cal-teal
+{
+    color: #7BCBC4;
+}
+.owa-color-cal-yellow
+{
+    color: #E3B75D;
+}
+.owa-color-folder-brown
+{
+    color: #EAC282;
+}</style>
+    
+    <script>
+        // There's a bug in WP8 IE 10.0 where device-width on Lumia 920 is reported as actual width 
+        // instead of css pixel width. This causes the UI to appear really tiny on high-res devices(OM:277530). 
+        // There's also another bug in IE10.0 device-width causes divs to not scroll, 
+        // even on non-high-res devices.(OM:281690).
+        // These bugs are being fixed. In the meanwhile, the WP8 IE team recommended this workaround.
+        (function () {
+            if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
+                var msViewportStyle = document.createElement("style");
+                msViewportStyle.appendChild(
+                    document.createTextNode("@-ms-viewport{width:auto!important}")
+                    );
+                document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+            }
+        })();
+    </script>
+
+    <style>
+        body
+        {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #owaLoading
+        {
+            background-color: #FFF;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10001;
+        }
+        
+        #loadingLogo, #loadingSpinner, #statusText
+        {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        #loadingLogo
+        {
+            padding-top: 174px;
+            padding-bottom: 22px;
+        }
+        
+        .tnarrow #loadingLogo
+        {
+            padding-top: 52px;
+        }
+
+        #statusText
+        {
+            color: #0072c6;
+            font-family: 'Segoe UI', 'Segoe WP', 'Segoe UI WPC', Tahoma, Arial, sans-serif;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        #statusText > span
+        {
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 11px;
+        }
+
+        #statusText.script > .script
+        {
+            display: inline;
+        }
+
+        #statusText.scriptDelay > .scriptDelay
+        {
+            display: inline;
+        }
+
+        #statusText.data > .data
+        {
+            display: inline;
+        }
+
+        #statusText.dataDelay > .dataDelay
+        {
+            display: inline;
+        }
+
+        #statusText.render > .render
+        {
+            display: inline;
+        }
+    </style>
+  <link href="./java space_files/sprite1.mouse.css" rel="stylesheet" type="text/css"><link href="./java space_files/boot.mouse.css" rel="stylesheet" type="text/css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.pcstrings.localized.min.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.personacontrol.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.recipientwell.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.attachments.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.common.compose.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/lwsprite1.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.attachments.attachmentwell.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.attachments.attachmentwell.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/nbsprite1.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.controls.editorbase.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.controls.richtexteditor.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.controls.editorbase.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.controls.richtexteditor.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.people.contactmanagement.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.people.photoupload.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calcorestrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.core.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.calendar.controls.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.controls.core.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.controls.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/calendarsurface.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.calsurfacestrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.surface.core.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.surface.desktop.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/mmsprite1.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/meetingmessage.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.meetingmessage.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.findpeople.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.findpeople.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.findpeople.mouse.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.mail.compose.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/mcwebfontglyphs.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.mail.compose.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.mail.compose.mouse.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.models.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.people.personcard.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/rpcwebfontglyphs.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.wex.orgchart.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.personcardstrings.localized.min.js"></script><script src="./java space_files/microsoft.wex.orgchart.strings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.people.personcard.js"></script><script src="./java space_files/microsoft.jsmvvm.controls.js"></script><script src="./java space_files/microsoft.wex.orgchart.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.personacardfacade.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/nbwebfontglyphs.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.peoplehub.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.strings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.peoplehub.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.peoplehub.mouse.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.inlinefeedback.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.inlinefeedback.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/cmwebfontglyphs.mouse.css"><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.calendar.meetingforms.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.calmfstrings.localized.min.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.calendar.meetingforms.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/nonboot.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.viewmodels.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.views.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.views.mouse.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.desktop.controls.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.desktop.viewmodels.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.desktop.views.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.application.viewmodels.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.application.views.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.core.im.mouse.css"><script src="./java space_files/microsoft.exchange.clients.owa2.client.core.im.js"></script><link rel="stylesheet" type="text/css" href="./java space_files/microsoft.exchange.clients.owa2.client.extensibility.mouse.css"><script src="./java space_files/osfruntime.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.extensibility.common.js"></script><script src="./java space_files/microsoft.exchange.clients.owa2.client.extensibility.js"></script></head>
+    <!--[if IE 8 ]> <body class="ie8"> <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!--> <body class="notIE8 customScrollBar removeFocusOutline" tabindex="-1" role="application"> <!--<![endif]-->
+    
+    <div id="preloadDiv" style="visibility: hidden; height: 1px; margin-bottom: -1px; overflow: hidden; display: none;">
+        
+        
+        <script>
+            try{
+                var userSpecificsLoaded = false,
+                styleResources = [],
+                userScriptResources = [],
+                clientTheme = 'base',
+                userCultureVar = 'en-US',
+                userCultureRtl = false,
+                sver = '15.0.1156.9',
+                userLanguageVar = 'en';
+                userSpecificResourcesHashVar = 'IkKVuzTRYr3FW0wfS7TPqqj3iFI=';
+                featuresVar = ["OwaPublicFolders","SuperNormal"];
+                traceTid= '',
+                traceMguid = '2f100d00-4a75-409e-9307-0912a7eaffbe',
+                bootTraceUrl = '',
+                cdnEndPointNameForBootResources = '';
+                cdnEndPointNameForNonBootResources = '';
+                    layout = 'mouse';
+                    stylesLocale = '0';
+                    updateStatusText('script', 9);
+                    setClientId(window.clientId);
+                    lcver = updateLastClientVersion(sver);
+                    var slabManifest = {"editorEngine":{"Dependencies":[],"Types":[],"Templates":[],"Styles":[],"Configurations":[],"Sources":[{"name":"microsoftajax.srte.js"},{"name":"ms.rte.js"},{"name":"rteinit.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"editor":{"Dependencies":["personacontrol","commoncompose"],"Types":["Editor"],"Templates":[],"Styles":[{"layout":"Mouse","name":"nbsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.controls.editorbase.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.controls.richtexteditor.mouse.css","type":"Themed"}],"Configurations":[{"layout":"Mouse","type":"RichTextEditorComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.controls.editorbase.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.controls.richtexteditor.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"peoplecore":{"Dependencies":[],"Types":["Persona","IUpdatePersonaActionFactory","ICreatePersonaResponseProcessorFactory","IDeletePersonaResponseProcessorFactory","IUpdatePersonaResponseProcessorFactory"],"Templates":[],"Styles":[],"Configurations":[{"type":"PeopleCoreComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.people.core.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.pcstrings.localized.min.js"}],"PackagedStrings":[]},"contactmanagement":{"Dependencies":[],"Types":[],"Templates":[],"Styles":[],"Configurations":[{"type":"ContactManagementComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.people.contactmanagement.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"photoupload":{"Dependencies":[],"Types":[],"Templates":[],"Styles":[],"Configurations":[{"type":"PhotoUploadComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.people.photoupload.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"nonboot":{"Dependencies":["attachments","attachmentwell","editor","peoplecore","contactmanagement","photoupload","calendarcore","calendarcontrols","calendarsurface","mailcompose","recipientwell","meetingmessage","personacontrol","personacardfacade","peoplehub","inlineFeedback","findpeople","calendarmeetingforms"],"Types":["IAddEventToMyCalendarResponseProcessorFactory","ICreateAttachmentResponseProcessorFactory","IDeleteAttachmentResponseProcessorFactory","IDeletePlaceResponseProcessorFactory","IPerformReminderActionResponseProcessorFactory","IDeepLinkService","IReminderDeepLinkHandler","IPopOutViewModel","IItemReadingPaneContextFactory","IComposePersonaCardViewModelFactory","IGroupCardViewModelFactory","IOfflineHelpProvider","ITelURIPersonaCardPopupViewModelFactory","ICompositePersonaViewModelFactory","IPeopleSearchSuggestionAdaptorViewModel","IPopOutHelper","ISendNotificationProviderViewModel","ISendFailureNotificationProviderViewModel","ITaskReadingPaneViewModelFactory","INotificationTrayViewModel","ISendNotificationProviderViewModel","ISendFailureNotificationProviderViewModel","IModuleHelpProvider","ITasksModuleViewModel","ISettingsPanelFactory","SettingsPanelViewModelBase","ITelURIPersonaCardPopupViewModelFactory","IPrimarySpeechViewModel","ISpeechJsonDeserializerUtils","IOpenAnotherMailboxViewModel","IExtendedSharedFolderViewModel","IMailErrorHandler","IMailFolderPermissionsDialogViewModel","IPopOutMailboxDataContextFactory","IGetComplianceConfigurationAction","IDiagnosticModuleViewDumper","IUnsupportedItemReadingPaneViewModel","ILinkSummaryCardViewModelFactory","IOptionsViewModel","IMeetNowManagerFactory","IThemesViewModel","IThemesViewCore","IApprovalRequestHeaderViewModelFactory","IUMMessagePostHeaderViewModelFactory","IModernGroupMembershipRequestHeaderViewModelFactory","IPersonaToNABContactDiffCalculatorFactory","IUploadPhotoViewModelFactory","ILinkSummaryCardViewModelFactory","IUserOofNotificationProvider","IFolderPickerContainer","IDumpsterPopOutViewModelFactory","IFlowHomeScreenViewModelFactory","IPublicFolderFeatureManager"],"Templates":["CategoryManagementContentView","ComposeScreenView","MessageDetailsView","Wrapper.PopOut","Wrapper.SearchContainerView_SpeechInput","Wrapper.HeaderView_NotificationView","Wrapper.PersonaView_Card"],"Styles":[{"layout":"Mouse","name":"nbsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"nonboot.mouse.css","type":"Themed"}],"Configurations":[{"type":"CoreModelsComponent"},{"type":"CoreViewModelsComponent"},{"type":"CoreViewsComponent"},{"layout":"Mouse","type":"DesktopViewModelsComponent"},{"layout":"Mouse","type":"DesktopViewComponent"},{"layout":"Mouse","type":"DesktopControlsComponent"},{"type":"ApplicationViewModelsComponent"},{"type":"ApplicationViewsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.models.js"},{"name":"microsoft.exchange.clients.owa2.client.core.viewmodels.js"},{"name":"microsoft.exchange.clients.owa2.client.core.views.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.views.mouse.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.desktop.controls.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.desktop.viewmodels.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.desktop.views.js"},{"name":"microsoft.exchange.clients.owa2.client.application.viewmodels.js"},{"name":"microsoft.exchange.clients.owa2.client.application.views.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"}],"PackagedStrings":[]},"offline":{"Dependencies":[],"Types":["IAppStatusBarViewModel","IAttachmentInfoItemStore","IAttachmentsCleanupManager","IClientStore","IInlineImageItemStore","IItemStoreGetterFactory","INotificationHandlerProxyFactory","IOfflineManager","IPageDataPayloadGenerator","IPageDataPayloadPersisterFactory","ISyncFolderSettingProcessor","ISyncController","ISyncManagerFactory","ISyncManagerSingleton"],"Templates":[],"Styles":[],"Configurations":[{"type":"OfflineBootComponent"},{"type":"CoreSyncComponent"},{"type":"CoreStorageComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.storage.js"},{"name":"microsoft.exchange.clients.owa2.client.core.offline.boot.js"},{"name":"microsoft.exchange.clients.owa2.client.core.sync.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"recipientwell":{"Dependencies":["peoplecore","personacontrol"],"Types":["IRecipientWellViewModelFactory"],"Templates":["ReadWriteRecipientWellView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.recipientwell.mouse.css","type":"Themed"}],"Configurations":[{"type":"RecipientWellComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.recipientwell.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.recipientwell.mouse.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"inlineFeedback":{"Dependencies":[],"Types":["InlineFeedbackView"],"Templates":["InlineFeedbackView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.inlinefeedback.mouse.css","type":"Themed"}],"Configurations":[],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.inlinefeedback.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"introductionPeek":{"Dependencies":[],"Types":["IIntroductionControllerFactory","IIntroductionPeekContentViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.introductionpeek.mouse.css","type":"Themed"}],"Configurations":[{"type":"IntroductionPeekComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.introductionpeek.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"documentattachment":{"Dependencies":["recipientwell"],"Types":["IDocumentAttachmentViewModelFactory"],"Templates":["DocumentAttachmentView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.attachments.documentattachment.mouse.css","type":"Themed"}],"Configurations":[{"type":"DocumentAttachmentViewModelsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.attachments.documentattachment.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"attachments":{"Dependencies":["recipientwell","personacontrol"],"Types":["IAttachmentViewModelFactory","IUriFileAttachmentViewModelFactory"],"Templates":[],"Styles":[],"Configurations":[{"type":"AttachmentsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.attachments.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"attachmentwell":{"Dependencies":["attachments","recipientwell","personacontrol","commoncompose"],"Types":["IAttachmentWellViewModelFactory","IWellKnownFileTypes"],"Templates":["AttachmentWellViewWrapper","AttachmentFilmStripView"],"Styles":[{"layout":"Mouse","name":"lwsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.attachments.attachmentwell.mouse.css","type":"Themed"}],"Configurations":[{"type":"AttachmentWellComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.attachments.attachmentwell.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"attachmentpreview":{"Dependencies":["documentattachment","recipientwell","personacontrol","nonboot"],"Types":["IAttachmentViewModelPopoutFactory","IAttachmentPreviewViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.attachments.legacyattachmentpreview.mouse.css","type":"Themed"}],"Configurations":[{"type":"LegacyAttachmentPreviewComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.attachments.legacyattachmentpreview.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"navigation":{"Dependencies":["calendarcore"],"Types":["INavigationViewModel","ICalendarMiniatureQueryTableFactory","ICalendarMiniatureNextAppointmentManager"],"Templates":[],"Styles":[],"Configurations":[{"type":"NavigationViewModelsComponent"},{"type":"NavigationViewsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.navigation.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nav.strings.localized.min.js"}],"PackagedStrings":[]},"readpersoncard":{"Dependencies":["boot","peoplecore"],"Types":["IReadPersonaCardViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.people.personcard.mouse.css","type":"Themed"},{"layout":"Mouse","name":"rpcwebfontglyphs.mouse.css","type":"Themed"},{"name":"microsoft.wex.orgchart.css","type":"Themed"}],"Configurations":[{"type":"ReadPersonCardComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.people.personcard.js"},{"name":"microsoft.jsmvvm.controls.js"},{"name":"microsoft.wex.orgchart.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.personcardstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"},{"name":"microsoft.wex.orgchart.strings.localized.min.js"}],"PackagedStrings":[]},"smime":{"Dependencies":[],"Types":["ISmimeCommandFactory","IComponentOverrideFactory"],"Templates":["SenderSignatureView","SignatureDetailsView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.smime.mouse.css","type":"Themed"}],"Configurations":[{"type":"SmimeComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.smime.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"linkpreview":{"Dependencies":[],"Types":["ILinkPreviewBuilder","ILinkPreviewBuilderFactory"],"Templates":[],"Styles":[],"Configurations":[{"type":"LinkPreviewComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.linkpreview.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"im":{"Dependencies":["recipientwell"],"Types":["IChatProviderFactory","IChatProvider","IChatManagerFactory","IChatActionFactory","IChatManager","IPresenceManager","IChatViewModelFactory","ILwxLoader","ILwxViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.im.mouse.css","type":"Themed"}],"Configurations":[{"layout":"Mouse","type":"IMComponent"}],"Sources":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.im.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"personacontrol":{"Dependencies":["boot","peoplecore"],"Types":["IBasePersonaViewModelFactory","IBasePersonaViewModel","IPersonaViewModelFactory","IPersonaViewModelWithDetails"],"Templates":["PersonaViewWrapper.ReadOnlyRecipientPopup","PersonaViewWrapper.PresenceDisplayPicturePopup","PersonaViewWrapper.BasicDetailsPopup"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.personacontrol.mouse.css","type":"Themed"}],"Configurations":[{"type":"PersonaControlComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.personacontrol.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"findpeople":{"Dependencies":["boot","peoplecore","personacontrol"],"Types":["IPeopleSuggestionLoader","IFindPeopleActionFactory","IFindRecipientMailComposeViewModel","IFindRecipientMailComposeViewModelFactory"],"Templates":["FindRecipientView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.findpeople.mouse.css","type":"Themed"}],"Configurations":[{"type":"FindPeopleComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.findpeople.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.findpeople.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"personacardfacade":{"Dependencies":["peoplecore","personacontrol","readpersoncard"],"Types":["IPersonaCardFacadeViewModelFactory","IModernGroupCardFacade","IPersonaCardViewModelFactory","IPersonaCardNavigator"],"Templates":[],"Styles":[],"Configurations":[{"type":"PersonaCardFacadeComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.personacardfacade.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"peoplehub":{"Dependencies":["peoplecore","personacontrol","personacardfacade","recipientwell","findpeople"],"Types":["IPeopleModuleViewModel","IRichPeoplePickerViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"nbwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.peoplehub.mouse.css","type":"Themed"}],"Configurations":[{"type":"PeopleHubComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.peoplehub.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.peoplehub.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.strings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.pcstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"publicfolderfeaturesupport":{"Dependencies":[],"Types":["IPublicFolderFeatureSupportResolver"],"Templates":[],"Styles":[],"Configurations":[{"type":"PublicFolderFeatureSupportComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.publicfolderfeaturesupport.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"publicfolderpicker":{"Dependencies":["boot"],"Types":["IPublicFolderPicker"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.publicfolderpicker.mouse.css","type":"Themed"}],"Configurations":[{"type":"PublicFolderPickerComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.publicfolderpicker.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.pfpickerstrings.localized.min.js"}],"PackagedStrings":[]},"mecard":{"Dependencies":["personacontrol"],"Types":["IMeCardViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.mecard.mouse.css","type":"Themed"}],"Configurations":[{"layout":"Mouse","type":"MeCardComponent"}],"Sources":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.mecard.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"calendarcore":{"Dependencies":["boot"],"Types":["ILocationViewModel","ICalendarPrefetcher","ICalendarItemViewModel"],"Templates":[],"Styles":[],"Configurations":[{"type":"CalendarCoreComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.core.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calcorestrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"}],"PackagedStrings":[]},"calendarmeetingforms":{"Dependencies":["calendarcore","boot","recipientwell","peoplecore","personacontrol","findpeople"],"Types":["IEventDetailsViewModelFactory","IComposeDurationViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"cmwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.meetingforms.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarMeetingFormsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.meetingforms.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calmfstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarcontrols":{"Dependencies":["boot"],"Types":[],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.controls.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarControlsCoreComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.controls.core.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.controls.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calcorestrings.localized.min.js"}],"PackagedStrings":[]},"calendarpicker":{"Dependencies":["calendarsurface","personacontrol"],"Types":["ICalendarPickerViewModel","ICalendarPickerModernGroupsProvider","ICalendarPickerModernGroupsViewModel"],"Templates":["CalendarPickerViewWrapper"],"Styles":[{"layout":"Mouse","name":"cpsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"calendarpicker.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarPickerComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.calendarpicker.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calpickerstrings.localized.min.js"}],"PackagedStrings":[]},"calendarsurface":{"Dependencies":["boot","calendarcore","calendarcontrols"],"Types":["ICalendarModuleViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"calendarsurface.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSurfaceCoreComponent"},{"layout":"Mouse","type":"CalendarSurfaceDesktopComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.surface.core.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.surface.desktop.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calsurfacestrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"}],"PackagedStrings":[]},"meetingmessage":{"Dependencies":["boot","calendarcore","peoplecore","personacontrol"],"Types":["ILocationViewModelFactory","IMeetingMessageViewModel","IMeetingMessageViewModelFactory","IMeetingResponseViewModel","IMeetingResponseViewModelFactory","IProposeNewTimeManager","ICalendarMailComposeConductorFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"mmsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"meetingmessage.mouse.css","type":"Themed"}],"Configurations":[{"type":"MeetingMessageComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.meetingmessage.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"}],"PackagedStrings":[]},"calendarpeek":{"Dependencies":["calendarcore","boot","recipientwell","peoplecore","personacontrol","findpeople","calendarmeetingforms","meetingmessage","calendarsurface"],"Types":["ICalendarContextPeekFactory","ICalendarItemPeekViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"ckwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.peek.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarPeekComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.peek.js"},{"name":"microsoft.exchange.clients.owa2.client.calendar.surface.core.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calpeekstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarsharingmanagement":{"Dependencies":["boot","calendarmeetingforms","calendarcore","calendarsurface","peoplecore","recipientwell","personacontrol","findpeople"],"Types":["ISharingCalendarViewModelFactory","ICalendarSharingPermissionsViewModelFactory","ISubscribeCalendarViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"shwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.sharing.management.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSharingManagementComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.sharing.management.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calendar.sm.strs.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarsharingmessage":{"Dependencies":["calendarcore"],"Types":["ICalendarShareMessageViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"shwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.sharing.message.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSharingMessageComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.sharing.message.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calendar.sm.strs.localized.min.js"}],"PackagedStrings":[]},"calendarprint":{"Dependencies":["calendarsurface"],"Types":["IPrintCalendarViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.print.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarPrintComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.print.js"},{"name":"printelement.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"calendarcompose":{"Dependencies":["calendarcore","calendarcontrols","boot","recipientwell","peoplecore","personacontrol","findpeople","calendarmeetingforms","commoncompose","editor"],"Types":["IComposeCalendarItemViewModelFactory","IComposeCalendarItemViewModel","IComposeRecurrenceViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"cxwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.compose.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarComposeComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.compose.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.compose.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calcompstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarreadingpane":{"Dependencies":["calendarcore","boot","recipientwell","peoplecore","personacontrol","findpeople","calendarmeetingforms","meetingmessage"],"Types":["ICalendarItemDetailsViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"chwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.readingpane.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarReadingPaneComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.readingpane.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calreadstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarplaces":{"Dependencies":["calendarcore","boot","peoplecore","personacontrol","calendarmeetingforms","personacardfacade","recipientwell","nonboot"],"Types":["IPlacePickerViewModelFactory","ILocationMapViewModelFactory","ILocationPanelViewModelFactory","IMapFactoryFactory","ILocationCardViewModelFactory"],"Templates":["LocationPanelView","BingMap"],"Styles":[{"layout":"Mouse","name":"clsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.places.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarPlacesComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.places.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.places.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calplacesstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"calendarscheduling":{"Dependencies":["calendarcore","boot","recipientwell","peoplecore","personacontrol","findpeople","calendarmeetingforms","calendarpeek","calendarsurface","calendarcontrols","meetingmessage"],"Types":["ISchedulingViewModel","ISchedulingViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.scheduling.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSchedulingComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.scheduling.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.calendar.scheduling.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.calschedstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"}],"PackagedStrings":[]},"helpPanel":{"Dependencies":[],"Types":["IHelpPanelViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.helppanel.mouse.css","type":"Themed"}],"Configurations":[{"type":"HelpPanelComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.helppanel.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.helppanelstrings.localized.min.js"}],"PackagedStrings":[]},"sharedhovercard":{"Dependencies":["personacontrol"],"Types":["SharedHoverCardShim"],"Templates":[],"Styles":[],"Configurations":[],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.sharedhovercard.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"calendarsearchinput":{"Dependencies":["calendarsurface","personacontrol"],"Types":[],"Templates":["CalendarSearchBox"],"Styles":[{"layout":"Mouse","name":"casprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"calendarsearchinput.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSearchInputComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.search.input.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.csearch.strings.localized.min.js"}],"PackagedStrings":[]},"calendarsearchoutput":{"Dependencies":["calendarsearchinput","nonboot","calendarpicker","instantsearch","findpeople"],"Types":["ICalendarEventSearchViewModel","ICalendarEventSearchViewModelFactory","IEventSearchViewModel","IOpenCalendarSuggestionsViewModel"],"Templates":[],"Styles":[{"layout":"Mouse","name":"calendarsearchoutput.mouse.css","type":"Themed"}],"Configurations":[{"type":"CalendarSearchOutputComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.calendar.search.output.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"options":{"Dependencies":["calendarcontrols","editor","personacontrol"],"Types":["IOptionsPanelViewModel","IOptionsLoader"],"Templates":["OptionsPanelView"],"Styles":[{"layout":"Mouse","name":"opwebfontglyphs.mouse.css","type":"Themed"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.options.mouse.css","type":"Themed"}],"Configurations":[{"type":"OptionsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.options.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.options.mouse.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.options.strings.localized.min.js"}],"PackagedStrings":[]},"resources":{"Dependencies":[],"Types":[],"Templates":[],"Styles":[{"name":"moeerrorux.css","type":"NotThemed"},{"name":"moeerroruxrtl.css","type":"NotThemed"}],"Configurations":[],"Sources":[{"name":"microsoft.naturallanguage.clientruntime.js"},{"name":"microsoft.naturallanguage.attachmentres.en.js"},{"name":"blank.html"}],"PackagedSources":[],"Strings":[{"name":"osfruntime_strings.js","type":"Extensibility"}],"PackagedStrings":[]},"extensibility":{"Dependencies":[],"Types":["IExtensibilityViewModelFactory","IExtensibilityViewModelBase","IComposeExtensibilityViewModel","IExtensibilityStatistics"],"Templates":["ExtensibilityView","ComposeExtensibilityView","ComposeAppsPane"],"Styles":[{"layout":"Mouse","name":"nbsprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.extensibility.mouse.css","type":"Themed"}],"Configurations":[{"type":"ExtensibilityComponent"}],"Sources":[{"name":"osfruntime.js"},{"name":"microsoft.exchange.clients.owa2.client.extensibility.common.js"},{"name":"microsoft.exchange.clients.owa2.client.extensibility.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"infotips":{"Dependencies":["recipientwell"],"Types":["IMailTipsHandlerFactory","IPolicyTipsHandlerFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.infotips.mouse.css","type":"Themed"}],"Configurations":[{"type":"InfoTipsComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.infotips.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"forgottenattachment":{"Dependencies":[],"Types":["IForgottenAttachmentDetectorFactory"],"Templates":[],"Styles":[],"Configurations":[{"type":"ForgottenAttachmentComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.forgottenattachment.js"},{"name":"microsoft.naturallanguage.clientruntime.js"},{"name":"microsoft.naturallanguage.attachmentres.en.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"commoncompose":{"Dependencies":[],"Types":["ComposeCopyPasteViewModelFactory"],"Templates":[],"Styles":[],"Configurations":[{"type":"CommonComposeComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.common.compose.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"survey":{"Dependencies":[],"Types":["ISurveyFactory","ISurveyDialogViewModelFactory"],"Templates":[],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.survey.mouse.css","type":"Themed"}],"Configurations":[{"layout":"Mouse","type":"SurveyComponent"}],"Sources":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.survey.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"mailcompose":{"Dependencies":["calendarcore","commoncompose","editor","meetingmessage","peoplecore","personacontrol","recipientwell","findpeople"],"Types":["IMailComposeActionFactory","IMailComposeContextFactory","IMailComposeDiscardManager","IMailComposeViewModelFactory","IMailResponseViewModelFactory"],"Templates":["MailComposeView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.mail.compose.mouse.css","type":"Themed"},{"layout":"Mouse","name":"mcwebfontglyphs.mouse.css","type":"Themed"}],"Configurations":[{"type":"MailComposeComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.mail.compose.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.mail.compose.mouse.js"},{"name":"microsoft.exchange.clients.owa2.client.core.models.js"}],"PackagedSources":[],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.commonstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.meetingmsgstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.nonbootstrings.localized.min.js"}],"PackagedStrings":[]},"instantsearch":{"Dependencies":["personacontrol"],"Types":["IInstantSearchFactory"],"Templates":["InstantSearchContainerView","InstantSearchSuggestionListContainerView"],"Styles":[{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.instantsearch.mouse.css","type":"Themed"},{"layout":"Mouse","name":"iswebfontglyphs.mouse.css","type":"Themed"}],"Configurations":[{"type":"InstantSearchComponent"}],"Sources":[{"name":"microsoft.exchange.clients.owa2.client.core.instantsearch.js"}],"PackagedSources":[],"Strings":[],"PackagedStrings":[]},"boot":{"Dependencies":[],"Types":["OwaStart","ReadingPaneViewModelBase","IMarkAsReadConversationActionFactory","IItemReadingPaneViewModelFactory","IItemReadingPaneViewModelPopOutFactory","IItemAttachmentPopOutFactory","IExtendedListViewModelFactory"],"Templates":["MessageBoxDefaultView","HeaderView"],"Styles":[{"layout":"Mouse","name":"sprite1.mouse.css","type":"Sprite"},{"layout":"Mouse","name":"boot.mouse.css","type":"Themed"}],"Configurations":[{"type":"CoreFrameworkComponent"},{"type":"BootModelsComponent"},{"type":"CoreControlsComponent"},{"type":"CoreWebServicesComponent"},{"type":"ApplicationAppComponent"},{"type":"BootViewModelsComponent"},{"type":"BootViewsComponent"},{"type":"MailListViewComponent"},{"type":"BootReadingPaneComponent"},{"type":"RecipientWellComponent"},{"type":"PeopleCoreComponent"},{"type":"PersonaControlComponent"},{"type":"ReadingPaneComponent"},{"layout":"Mouse","type":"MeCardComponent"},{"layout":"Mouse","type":"LegacyHeaderComponent"},{"type":"ExtendedMailListViewComponent"}],"Sources":[{"layout":"Mouse","name":"jquery-ui-1.8.21.js"},{"name":"microsoft.jsmvvm.framework.js"},{"name":"microsoft.fabric.framework.js"},{"name":"microsoft.fabric.models.js"},{"name":"microsoft.fabric.controls.js"},{"name":"microsoft.fabric.controls.extended.js"},{"name":"microsoft.exchange.clients.owa2.client.core.notifications.js"},{"name":"microsoft.exchange.clients.owa2.client.core.framework.js"},{"name":"microsoft.exchange.clients.owa2.client.program.js"},{"name":"microsoft.exchange.clients.owa2.client.core.webservices.js"},{"name":"microsoft.exchange.clients.owa2.client.boot.common.js"},{"name":"microsoft.exchange.clients.owa2.client.boot.models.js"},{"name":"microsoft.exchange.clients.owa2.client.boot.viewmodels.js"},{"name":"microsoft.exchange.clients.owa2.client.core.controls.js"},{"name":"microsoft.exchange.clients.owa2.client.boot.views.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.boot.views.mouse.js"},{"name":"microsoft.exchange.clients.owa2.client.application.app.js"},{"name":"microsoft.exchange.clients.owa2.client.maillistviewmodels.js"},{"name":"microsoft.exchange.clients.owa2.client.maillistview.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.maillistview.mouse.js"},{"name":"microsoft.exchange.clients.owa2.client.boot.bootreadingpane.js"},{"name":"microsoft.exchange.clients.owa2.client.core.recipientwell.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.recipientwell.mouse.js"},{"name":"microsoft.exchange.clients.owa2.client.people.core.js"},{"name":"microsoft.exchange.clients.owa2.client.core.personacontrol.js"},{"name":"microsoft.exchange.clients.owa2.client.application.readingpane.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.application.readingpane.mouse.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.core.mecard.js"},{"layout":"Mouse","name":"microsoft.exchange.clients.owa2.client.header.legacy.js"},{"name":"microsoft.exchange.clients.owa2.client.extendedmaillistview.js"}],"PackagedSources":[{"layout":"Mouse","name":"boot.0.mouse.js"},{"layout":"Mouse","name":"boot.1.mouse.js"}],"Strings":[{"name":"microsoft.exchange.clients.owa2.client.strings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.frameworkstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.bootcommonstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.bootmodelsstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.webservicesstrings.localized.min.js"},{"name":"microsoft.exchange.clients.owa2.client.pcstrings.localized.min.js"}],"PackagedStrings":[{"layout":"Mouse","name":"boot.mouse.strings.localized.min.js"}]}};
+            
+                    function checkUTFEncoding() {
+                        var decodedString = "你好A";
+                        if (htmlDec("&#20320;&#22909;&#65;") != decodedString) {
+                            alert("Outlook Web App requires your browser to use UTF-8 encoding. For your protection, you\u0027ll be signed out. Please set your browser encoding to UTF-8 and sign in again.");
+                        window.location.href = "/owa/logoff.owa";
+                    }
+                }
+
+                checkUTFEncoding();
+
+                userScriptResources[userScriptResources.length] = { "fileName": "prem/15.0.1156.9/scripts/##LANG##/boot.mouse.strings.localized.min.js", "layout": LT_ANY };
+                
+
+                    // initialize boot scripts load states
+                    window.scriptsLoaded = window.scriptsLoaded || {};
+                    window.scriptsLoaded['preboot.js'] = 0;
+
+                
+                    window.scriptsLoaded['boot.0.mouse.js'] = 0;
+                
+                    window.scriptsLoaded['boot.1.mouse.js'] = 0;
+                
+            }
+            catch (ex) {
+                window.owaLastErrorReported = ex;
+                throw ex;
+            }
+
+            function setupUserSpecificResources(serverVersion, curTheme, curCulture, curLang, isRtl, minOwsVersion, serverOwsVersion, curStyleLocale, userSpecificResourcesHash, curFeatures, curDefaultAspxVer) {
+                try{
+                    var defaultPageVer = 3;
+                    var forcePLTOnVersionChange = true;
+                    var versionCheckPassed = defaultPageVer == curDefaultAspxVer;
+
+                    if (forcePLTOnVersionChange) {
+                        versionCheckPassed = versionCheckPassed && serverVersion == sver;
+                    }
+                    else if (minOwsVersion == null) {
+                        // this will be the case for users not on the OwaVersioning flight
+                        versionCheckPassed = versionCheckPassed && !isMajorVersionChanged(sver, serverVersion);
+                    }
+                    else {
+                        var clientVer = _g.OWSVersion.create(_g.ClientVersionProvider.currentOWSVersion);
+                        var serverVer = _g.OWSVersion.create(serverOwsVersion);
+                        var minVer = _g.OWSVersion.create(minOwsVersion);
+                        versionCheckPassed = versionCheckPassed && clientVer.supports(minVer) && serverVer.supports(clientVer);
+                    }
+
+                    var compareFeatures = function(cf, f) {
+                        if ((cf == null && f == null) || cf == f)
+                            return true;
+                        if (cf == null || f == null || cf.length != f.length)
+                            return false;
+                        for (var i = 0; i < cf.length; i++) {
+                            if (cf[i] != f[i]) return false;
+                        }
+                        return true;
+                    }
+
+                    var featureCheckPassed = compareFeatures(curFeatures, featuresVar);
+                    var redirectParam = 'ver' + '=' + serverVersion;
+                    if (versionCheckPassed && featureCheckPassed &&
+                            (serverVersion == sver || 
+                            (curTheme == clientTheme && curCulture == userCultureVar && curLang == userLanguageVar && userSpecificResourcesHash == userSpecificResourcesHashVar))|| 
+                            window.location.href.indexOf(redirectParam) >=0) {
+                        clientTheme = curTheme;
+                        userCultureVar = curCulture;
+                        userLanguageVar = curLang;
+                        userCultureRtl = isRtl;
+                        stylesLocale = curStyleLocale;
+
+                        document.getElementsByTagName("html")[0].setAttribute('dir', isRtl ? "rtl" : "ltr");
+
+
+                        
+                            loadScripts(userScriptResources, cdnEndPointNameForBootResources != "", false);
+                        
+                    }
+                    else {
+                        redirect('ver', serverVersion,'cver', sver, 'cf', (featureCheckPassed ? 1 : 0), 'vC', (versionCheckPassed ? 1 : 0));
+                    }
+                }
+                catch (ex) {
+                    window.owaLastErrorReported = ex;
+                    throw ex;
+                }
+            }
+        </script>
+        
+        <span style="font-family:&quot;Segoe UI WPC&quot;;">t</span>
+        <span style="font-family:&quot;Segoe UI WPC Semibold&quot;;">t</span>
+        <span style="font-family:&quot;Segoe UI WPC Semilight&quot;;">t</span>
+        <span style="font-family:&quot;webfontPreload&quot;;"></span>
+        <script src="./java space_files/preboot.js" onerror="onScriptLoadError2(this)"></script>
+        <script>parseEndTimes["preboot.js"] = ((new Date()) - window.dateZero);</script>
+        
+        <script src="./java space_files/boot.0.mouse.js" onerror="onScriptLoadError2(this)"></script>
+        <script>parseEndTimes["boot.0.mouse.js"] = ((new Date()) - window.dateZero);</script>
+        
+        <script src="./java space_files/boot.1.mouse.js" onerror="onScriptLoadError2(this)"></script>
+        <script>parseEndTimes["boot.1.mouse.js"] = ((new Date()) - window.dateZero);</script>
+        
+        <script src="./java space_files/userspecificresourceinjector.ashx"></script><script src="./java space_files/boot.mouse.strings.localized.min.js" onerror="onScriptLoadError2(this)"></script><script>parseEndTimes['boot.mouse.strings.localized.min.js'] = ((new Date()) - window.dateZero);</script><script src="./java space_files/globalize.culture.en-us.js" onerror="onScriptLoadError2(this)"></script><script>parseEndTimes['globalize.culture.en-us.js'] = ((new Date()) - window.dateZero);</script>
+        <script>parseEndTimes["userspecificresourceinjector.ashx"] = ((new Date()) - window.dateZero);</script>
+        <script>loadStyles(styleResources);</script>
+        
+            <img src="https://mail.ril.com/owa/prem/15.0.1156.9/resources/images/0/sprite1.mouse.png">
+                
+                <img src="https://mail.ril.com/owa/prem/15.0.1156.9/resources/themes/base/images/0/headerbgmain.png">
+                <img src="https://mail.ril.com/owa/prem/15.0.1156.9/resources/themes/base/images/0/headerbgright.png">
+            
+
+        <img src="https://mail.ril.com/owa/prem/15.0.1156.9/resources/images/0/folderpane_bg.png">
+    </div>
+  
+
+    <!-- Load core scripts/css normally -->
+    <!-- Include scripts from the client side.  Method defined in default.js -->
+    <script>
+        updateStatusText('data', 4);
+        function invokeMain(){
+            try{
+                setStartRenderTime();
+                readingPaneOn = PageDataPayload.getConversationItems != null ? true : false;
+                Program.main({'version': '15.0.1156.9','startTime': st,'bootedFromAppcache': appCachedPage,'cdnEndpoint': '','mapControlUrl': '','appDomainAppVirtualPath': '/owa','layout': layout,'uiCulture': userCultureVar,'uiLang': userLanguageVar,'userCultureRtl': userCultureRtl,'uiTheme': clientTheme,'osfStringPath': 'prem/15.0.1156.9/scripts/ext/en/osfruntime_strings.js','scriptsFolder': 'prem/15.0.1156.9/scripts','resourcesFolder': 'prem/15.0.1156.9/resources','featuresSupported': ["OwaPublicFolderFavorites","OwaPublicFolders","SuperNormal"],'themedImagesFolderFormat': 'prem/15.0.1156.9/resources/images/0','stylesFolderFormat': 'prem/15.0.1156.9/resources/styles/#LCL','stylesLocale': stylesLocale}, slabManifest);
+                PageDataPayload = {};
+                document.getElementById('preloadDiv').style.display = "none";
+            }
+            catch (ex) {
+                window.owaLastErrorReported = ex;
+                throw ex;
+            }
+        }
+
+        function owastart() {
+            if (!userSpecificsLoaded && window.owaSD.status == 200) {
+                handleBootError2('UserSpecificError');
+                return;
+            }
+
+            if (!window.owaSD || window.owaSDState.consumed) {
+                return;
+            }
+
+            window.owaSDState.consumed=true;
+            if (window.owaSD.readyState == 4) { 
+                if (window.owaSD.status == 200) {
+                    try {
+                        PageDataPayload = JsonParser.deserialize(window.owaSDState.data);
+                    } catch (e) { 
+                        var data = window.owaSDState.data;
+                        var validResponse = data != null && data.indexOf('{') == 0 && data.lastIndexOf('}') == data.length-1 && data.indexOf('owaUserConfig') != -1;
+                        var errMsg = 'SrvErr:' + window.owaSD.getResponseHeader("X-OWA-Error") + ',ClientErr:' + e.message + ',ValidResponse:' + validResponse;
+                        handleBootError2(
+                            'SessionDataError',
+                            errMsg,
+                            window.owaSD.getResponseHeader("X-OWA-Version"),
+                            window.owaSD.getResponseHeader('X-BEServer'));
+                        return;
+                    }
+                  } else {
+                      handleBootError2(
+                          'SDServerErr',
+                          window.owaSD.getResponseHeader("X-OWA-Error"),
+                          window.owaSD.getResponseHeader("X-OWA-Version"),
+                          window.owaSD.getResponseHeader('X-CalculatedBETarget'));
+                      if (!userEnabledOffline()) {
+                          return;
+                      }
+                  }
+            }
+
+            updateStatusText('render', 30);
+
+            // Settimeout is needed to update the status. If we do not let the
+            // control go, the status update will never get to the screen.
+            // BTW, this also ensures that we get SessionDataTiming in performance.GetEntries
+            // for chrome
+            setTimeout(function() {
+                invokeMain();
+                if (window.owaSD.readyState == 4) {
+                    postBootTrace('success;' + window.owaSD.status);
+                } else {
+                    postBootTrace('success;' + window.owaSD.readyState);
+                }
+            },
+            0);
+        }
+
+        function owastartpopout()
+        {
+            if (!userSpecificsLoaded) {
+                handleBootError2('UserSpecificError');
+                return;
+            }
+
+            invokeMain();
+            cleanupErrorCallback();
+        }
+
+        function startUpOwa() {
+            parseEndTimes["allDone"] = ((new Date()) - (new Date(0)));
+
+            if (isPopOut) {
+                owastartpopout();
+            } else {
+                window.owaSDConsumable=true;
+                if (window.owaSDdidHandlerExecute || userEnabledOffline()) {
+                    owastart();
+                }
+            }
+        }
+
+        try
+        {
+            
+                startUpOwa();
+            
+        }
+        catch (ex) {
+            window.owaLastErrorReported = ex;
+            throw ex;
+        }
+    </script>
+
+<div autoid="_n_Z" class="_n_X4" regioncontainer="1">  <div class="conductorContent"><div><div autoid="_n_T" class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_9" aria-describedby="_ariaId_10" style="display: none;"></div></div><div class="_rp_b5" role="marquee" aria-hidden="true" aria-busy="false" style="display: none;"><div> <span class="_fce_7" style="display: none;">Loading</span> <span class="_fce_5 owaimg csimg image-thinking16_grey-gif" role="presentation" style="display: none;"></span> <div dir="ltr" class="spinnerContainer smallSpinner"> <div class="spinner"><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div><div class="ball _fce_3 ms-bg-color-themePrimary"></div></div> </div> <span class="_fce_7" style="">Loading</span> </div></div><div class="_rp_c5"><div class="_rp_c5"><div class="_rp_J3 ShowReferenceAttachmentsLinks" tabindex="-1"><div class="_rp_I3" style="display: none;"></div><div class="_rp_J3 disableTextSelection"> <div class="_rp_N3 disableTextSelection customScrollBar scrollContainer" role="region" tempid="id=readingpane;path=/Views/ItemReadingPaneView.Mouse.htm" aria-label="Reading Pane"> <div class="_rp_K3"> <div class="_rp_L3 ms-font-color-neutralPrimary ms-font-l ms-font-weight-regular"> <div class="allowTextSelection"> <span autoid="_rp_I" class="rpHighlightAllClass rpHighlightSubjectClass" role="heading" tabindex="-1">转发: O2p Instance showing down</span>  <span role="heading" tabindex="-1" style="display: none;">(No subject)</span>  <span role="heading" class="owaimg" tabindex="-1" style="display: none;"></span> </div> </div> <div class="_rp_Z3" style="display: none;"></div> </div> <div class="_rp_U3 ms-font-weight-regular" tabindex="-1" style="display: none;"></div> <div class="_rp_T3"> <div style="display: none;"></div> <div><div class="_rp_P3"><div tempid="id=itemPartInfo;path=Core/Views/Mail/ItemHeaderView.Mouse.htm" class="_rp_X"> <div class="_rp_y1" aria-hidden="true" tabindex="-1" style="cursor: auto;"><div class="_rp_Y" tabindex="-1" aria-label="Mail Actions"><div> <button type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_19"><span class="_rp_71 owaimg _rp_51 wf wf-size-x18 wf-owa-delete-red wf-family-owa owa-color-neutral-red" role="presentation" title="Delete"></span><span class="_rp_61 _rp_41" id="_ariaId_19">DELETE</span></button> <button autoid="_rp_g" type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_18"><span role="presentation" class="owaimg _rp_51 wf wf-size-x18 wf-owa-arrow-left-grey wf-family-owa ms-font-color-neutralSecondary" title="Reply"></span><span class="_rp_61 _rp_41" id="_ariaId_18">REPLY</span></button> <button autoid="_rp_h" type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_17"><span role="presentation" class="owaimg _rp_51 wf wf-size-x18 wf-owa-arrow-double-left wf-family-owa ms-font-color-neutralSecondary" title="Reply all"></span><span class="_rp_61 _rp_41" id="_ariaId_17">REPLY ALL</span></button> <button type="button" class="_rp_31 ms-font-xs o365button ms-font-m" style="display: none;"></button> <button autoid="_rp_i" type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_16"><span role="presentation" class="owaimg _rp_51 wf wf-size-x18 wf-owa-arrow-right-grey wf-family-owa ms-font-color-neutralSecondary" title="Forward"></span><span class="_rp_61 _rp_41" id="_ariaId_16">FORWARD</span></button>  <button autoid="_rp_j" type="button" class="_rp_31 ms-font-xs _rp_k1 o365button ms-font-m ms-font-color-neutralSecondary" title="More actions" aria-label="More Actions" aria-haspopup="true"><span class="_fc_3 owaimg _rp_51 wf wf-size-affordance-small wf-owa-affordance-small wf-family-owa ms-bg-color-neutralLight ms-font-color-neutralSecondary" role="presentation" style=""></span><span class="_fc_4 o365buttonLabel _rp_41 _fc_2" style="display: none;"></span></button> </div><div class="hidden"> <button autoid="_rp_k" type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_15"><span class="_rp_81 owaimg _rp_51 wf wf-size-x18 wf-owa-edit wf-family-owa ms-font-color-neutralSecondary" role="presentation"></span><span class="_rp_61 _rp_41" id="_ariaId_15">CONTINUE EDITING</span></button> <button autoid="_rp_l" type="button" class="_rp_31 ms-font-xs o365button ms-font-m ms-font-color-neutralSecondary" aria-labelledby="_ariaId_14"><span class="_rp_71 owaimg _rp_51 wf wf-size-x18 wf-owa-delete-red wf-family-owa owa-color-neutral-red" role="presentation"></span><span class="_rp_61 _rp_41" id="_ariaId_14">DISCARD</span></button> </div></div><div><div><button autoid="_rp_m" type="button" class="_rp_01 ms-font-s ms-font-weight-semibold o365button ms-font-m" role="button" tabindex="0" aria-labelledby="_ariaId_13"><span class="_fc_3 owaimg" role="presentation" style="display: none;"></span><span class="_fc_4 o365buttonLabel" id="_ariaId_13" style="">Mark as unread</span></button><div class="_rp_l1"><span class="_rp_U"><div class="_pe_7" tabindex="-1" aria-haspopup="true">  <span class="_pe_9"> <span role="presentation" class="owaimg presence presenceUnknown presenceSizeVbarMLarge"></span> </span> <span class="_pe_d"> <div class="_pe_S"><div class="wf wf-size-doughboy-person-64 wf-owa-doughboy-person-64 wf-family-owa ms-bg-color-neutralTertiary ms-font-color-white"></div><div class="_pe_f"><img class="_pe_n" aria-label="Contact photo" src="./java space_files/GetPersonaPhoto" style="display: inline;"></div></div> </span> <div style="display: none;"></div> </div></span></div><div class="_rp_l1" style="display: none;"></div><div class="_rp_m1"> <div class="_rp_V ms-font-l rpHighlightAllClass rpHighlightFromClass ms-font-color-neutralPrimary" tabindex="-1" id="ItemHeader.SenderLabel" role="heading"><div style="display: none;"></div><div><div class="_rp_05 _rp_15"><span class="_pe_61"><div class="_pe_7 _pe_P" tabindex="-1" aria-haspopup="true">  <span class="_pe_b"> <span autoid="_pe_9" role="button" tabindex="0" class="bidi allowTextSelection" aria-label="Chao Liu (Consultant). Press the Enter key to open the contact card.">Chao Liu (Consultant)</span> </span> <div style="display: none;"></div> </div></span></div></div></div> <div class="_rp_n1 ms-font-xs ms-font-color-neutralSecondary"> <div><span autoid="_rp_n" tabindex="0" id="ItemHeader.DateReceivedLabel" role="heading">Fri 9/2/2016 15:58</span></div> <div style="display: none;"></div> </div>  <div class="_rp_n1 ms-font-xs ms-font-color-neutralSecondary _rp_o1"> <div style="display: none;"></div> </div> </div><div class="_rp_j1"></div></div></div><div autoid="_rp_b" tabindex="0" role="heading" style="display: none;"></div><div aria-hidden="true" tabindex="-1" style="display: none;"></div></div>  <div style="display: none;"></div>  <div class="_rp_91"><div class="_rp_j1" style="display: none;"></div><div class="_rp_b1" id="ItemHeader.ToContainer" role="heading" tabindex="-1"><span class="_rp_d1 ms-font-color-black _rp_c1">To:</span><div autoid="_rp_d" class="rpHighlightAllClass rpHighlightAllRecipientsClass rpHighlightToClass _rp_a1"><div class="_rw_4" tabindex="0" aria-label="To recipients. Use the Arrow keys to navigate the list, and the Enter key to open a contact card."><div class="_rw_3"><span class="_rw_5"><span class="_rw_2" tabindex="-1"><div class="_pe_7 _pe_k _pe_8" tabindex="-1" aria-haspopup="true">  <span class="_pe_a _pe_k _pe_w owaimg presence presenceUnknown presenceSizeMedium" role="presentation"></span> <span autoid="_pe_6" class="_pe_b _pe_k _pe_41 bidi _pe_D ms-font-color-black ms-font-color-themePrimary-hover allowTextSelection _pe_u">Chen Qikai (Consultant);</span> <div style="display: none;"></div> </div></span></span></div><span class="_rw_6 ms-font-weight-regular ms-font-color-black hidden">...</span></div></div></div><div class="_rp_b1" id="ItemHeader.CcContainer" role="heading" tabindex="-1" style="display: none;"></div><div class="_rp_b1" id="ItemHeader.BccContainer" role="heading" tabindex="-1" style="display: none;"></div><div class="_rp_b1" id="ItemHeader.PostedToContainer" role="heading" tabindex="0" style="display: none;"></div></div> <div class="_rp_T" style="display: none;"></div>  <div><div class="_rp_u1 ms-font-s" role="heading" tabindex="0" style="display: none;"></div></div> <div class="_rp_T"><div class="attachmentWell"><div autoid="_az_0" class="_az_8" style="display: none;"></div><button type="button" class="_az_9 ms-font-weight-regular ms-font-color-themeSecondary o365button ms-font-m" style="display: none;"></button><div><div autoid="_n_T" class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_20" aria-describedby="_ariaId_21" style="display: none;"></div></div><div class="hidden"></div></div></div> </div><div style="display: none;"></div><div class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_11" aria-describedby="_ariaId_12" style="display: none;"></div></div><div autoid="_rp_J"><div class="_ex_v"> <div class="_ex_y ms-bg-color-neutralLight"> <div autoid="_ex_c"><button autoid="_ex_d" type="button" class="_ex_B o365button ms-font-m" aria-labelledby="_ariaId_22"><span class="_fc_3 owaimg wf wf-size-add-small-ext wf-owa-add-small-ext wf-family-owa ms-font-color-neutralSecondary" role="presentation" style=""></span><span class="_fc_4 o365buttonLabel _fc_2" id="_ariaId_22" style="">Get more apps</span></button><div class="_ex_x"><div tabindex="0" role="button" class="_ex_x"><div autoid="_ex_e" class="_ex_w ms-font-s ms-font-color-themePrimary"><span autoid="_ex_f">Enterprise Vault</span></div></div></div><button type="button" class="_ex_A ms-font-s ms-font-color-themePrimary o365button ms-font-m" style="display: none;"></button></div> </div> <div class="_ex_z ms-border-color-themeSecondary" style="display: none;"></div> <div class="hidden"> </div> </div></div><div style="display: none;"></div><div style="display: none;"></div><div role="region" autoid="_rp_K" class="_rp_Q3">  <div class="itemPartBody _rp_S3 ms-font-weight-regular ms-font-color-neutralDark" style="display: none;"></div>  <div autoid="_rp_L" class="_rp_R3" style="display: none;"></div>  <div><div autoid="_rp_M" class="_rp_R3 rpHighlightAllClass rpHighlightBodyClass allowTextSelection">  <div aria-label="Message Body" role="document" tabindex="0" style="display: none;"></div>  <div> <div class="_rp_S3 ms-font-weight-regular ms-font-color-neutralDark" role="button" tabindex="0"><div class="rps_f486"><style type="text/css"><!-- .rps_f486 p.MsoNormal, .rps_f486 li.MsoNormal, .rps_f486 div.MsoNormal
+{ margin: 0cm; margin-bottom: .0001pt; font-size: 11.0pt; font-family: "Calibri","sans-serif"; }
+.rps_f486 span.MsoHyperlink
+{ color: #0563C1; text-decoration: underline; }
+.rps_f486 span.MsoHyperlinkFollowed
+{ color: #954F72; text-decoration: underline; }
+.rps_f486 span.EmailStyle17
+{ font-family: "Calibri","sans-serif"; color: windowtext; }
+.rps_f486 span.EmailStyle18
+{ font-family: "Calibri","sans-serif"; color: #1F497D; }
+.rps_f486 span.EmailStyle19
+{ font-family: "Calibri","sans-serif"; color: #1F497D; }
+.rps_f486 span.EmailStyle20
+{ font-family: "Calibri","sans-serif"; color: #1F497D; }
+.rps_f486 .MsoChpDefault
+{ font-size: 10.0pt; }
+ --></style>
+<div lang="ZH-CN">
+<div class="WordSection1">
+<p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt; color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="font-size:10.5pt; color:#1F497D">&nbsp;</span></p>
+<div>
+<div style="border:none; border-top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm">
+<p class="MsoNormal"><b><span style="font-family:&quot;微软雅黑&quot;,&quot;sans-serif&quot;">发件人<span lang="EN-US">:</span></span></b><span lang="EN-US" style="font-family:&quot;微软雅黑&quot;,&quot;sans-serif&quot;"> Anupam1 Roy (Consultant) <br>
+</span><b><span style="font-family:&quot;微软雅黑&quot;,&quot;sans-serif&quot;">发送时间<span lang="EN-US">:</span></span></b><span lang="EN-US" style="font-family:&quot;微软雅黑&quot;,&quot;sans-serif&quot;"> 2016</span><span style="font-family:&quot;微软雅黑&quot;,&quot;sans-serif&quot;">年<span lang="EN-US">9</span>月<span lang="EN-US">2</span>日<span lang="EN-US"> 15:52<br>
+</span><b>收件人<span lang="EN-US">:</span></b><span lang="EN-US"> Mohsin Abbas; RJIL RTSSTeam; Sameer S Anand<br>
+</span><b>抄送<span lang="EN-US">:</span></b><span lang="EN-US"> RJIL TOPSSelfCare; Shubhrangshu Kar; Rupesh Katta (Consultant); RJIL TOPSWeblogic<br>
+</span><b>主题<span lang="EN-US">:</span></b><span lang="EN-US"> RE: O2p Instance showing down</span></span></p>
+</div>
+</div>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">Hi Mohsin sir,</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">We observed issue today in RTSS, servers got unresponsive due to outofmemory in Heap. </span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">Weblogic team has shared the heap dump </span><span lang="EN-IN" style="color:#1F497D">located at Dumping heap to /app/heap/O2pPod1_2_log_msrv5.hprof.</span><span lang="EN-US" style="color:#1F497D"></span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">Kindly share the RCA and let us know by when outofmemory issue can be resolved.</span></p>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">&nbsp;</span></p>
+<div>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="font-size:12.0pt; color:#2E74B5">Thanks &amp; Regards,</span></b><span lang="EN-US" style="color:#1F497D"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="font-size:12.0pt; font-family:&quot;Segoe UI&quot;,&quot;sans-serif&quot;; color:#2E74B5">Anupam Roy</span></b><span lang="EN-US" style="color:#1F497D"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><span lang="EN-US" style="font-family:Wingdings; color:#2E74B5">*</span><span lang="EN-US" style="color:#2E74B5">anupam1.roy@ril.com</span><span lang="EN-US" style="color:#1F497D"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="color:#2E74B5">Assignment Group</span></b><span lang="EN-US" style="color:#2E74B5">: RJIL TOPSSelfCare</span><span lang="EN-US" style="color:#1F497D"></span></p>
+</div>
+<p class="MsoNormal"><span lang="EN-US" style="color:#1F497D">&nbsp;</span></p>
+<div>
+<div style="border:none; border-top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm">
+<p class="MsoNormal"><b><span lang="EN-US">From:</span></b><span lang="EN-US"> Rupesh Katta (Consultant) <br>
+<b>Sent:</b> Friday, September 02, 2016 3:18 PM<br>
+<b>To:</b> Anupam1 Roy (Consultant); RJIL TOPSWeblogic<br>
+<b>Cc:</b> RJIL TOPSSelfCare; Shubhrangshu Kar<br>
+<b>Subject:</b> RE: O2p Instance showing down</span></p>
+</div>
+</div>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">Servers were unresponsive due of activeMq and OutOfMemory in Heap &nbsp;, we have taken the restart of the servers . Now servers are up and running …</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">Heap Dump is located at Dumping heap to /app/heap/O2pPod1_2_log_msrv5.hprof</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN"><img originalsrc="cid:image002.png@01D2052F.F3F35CE0" data-custom="AAMkADE1YzA3ODFjLTc2N2YtNDIyZS1iZjVjLTM1NzZkNmU4MzYyYwBGAAAAAABnSwNfS3uAToHbpHzW8W%2BfBwAjbsivIdU7QqZ87K6xaFidAAAAAAENAAAjbsivIdU7QqZ87K6xaFidAAD3SLjQAAABEgAQADXOEJT9iJdAgMPxuNQk058%3D" src="https://mail.ril.com/owa/service.svc/s/GetFileAttachment?id=AAMkADE1YzA3ODFjLTc2N2YtNDIyZS1iZjVjLTM1NzZkNmU4MzYyYwBGAAAAAABnSwNfS3uAToHbpHzW8W%2BfBwAjbsivIdU7QqZ87K6xaFidAAAAAAENAAAjbsivIdU7QqZ87K6xaFidAAD3SLjQAAABEgAQADXOEJT9iJdAgMPxuNQk058%3D&amp;X-OWA-CANARY=gBPnAY-M3UaJWL9IUNlAenQTmw8d09MIwSvBEFI7suXInAjy7uNWsrQS2udr1DVSV46IQqL5jIw." width="1329" height="206" id="_x0000_i1025" style="display: inline;"><span style="color:#1F497D"></span></span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">Regards,</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">Rupesh Katta</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-IN" style="color:#1F497D">&nbsp;</span></p>
+<div>
+<div style="border:none; border-top:solid #E1E1E1 1.0pt; padding:3.0pt 0cm 0cm 0cm">
+<p class="MsoNormal"><b><span lang="EN-US">From:</span></b><span lang="EN-US"> Anupam1 Roy (Consultant) <br>
+<b>Sent:</b> 02 September 2016 15:05<br>
+<b>To:</b> RJIL TOPSWeblogic<br>
+<b>Cc:</b> RJIL TOPSSelfCare; Shubhrangshu Kar<br>
+<b>Subject:</b> O2p Instance showing down</span></p>
+</div>
+</div>
+<p class="MsoNormal"><span lang="EN-IN">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US">Hi Weblogic team,</span></p>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US">Instance is showing not reachable, Console :- <a href="http://10.141.31.19:7003/console" target="_blank">http://10.141.31.19:7003/console</a>.</span></p>
+<p class="MsoNormal"><span lang="EN-US">kindly take a restart, verbal approval taken from Shubhrangshu for restart.</span></p>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<p class="MsoNormal"><span lang="EN-US"><img originalsrc="cid:image003.png@01D2052F.F3F35CE0" data-custom="AAMkADE1YzA3ODFjLTc2N2YtNDIyZS1iZjVjLTM1NzZkNmU4MzYyYwBGAAAAAABnSwNfS3uAToHbpHzW8W%2BfBwAjbsivIdU7QqZ87K6xaFidAAAAAAENAAAjbsivIdU7QqZ87K6xaFidAAD3SLjQAAABEgAQAN9Pk%2FyFrJxOmFQkA1EMdmk%3D" src="https://mail.ril.com/owa/service.svc/s/GetFileAttachment?id=AAMkADE1YzA3ODFjLTc2N2YtNDIyZS1iZjVjLTM1NzZkNmU4MzYyYwBGAAAAAABnSwNfS3uAToHbpHzW8W%2BfBwAjbsivIdU7QqZ87K6xaFidAAAAAAENAAAjbsivIdU7QqZ87K6xaFidAAD3SLjQAAABEgAQAN9Pk%2FyFrJxOmFQkA1EMdmk%3D&amp;X-OWA-CANARY=gBPnAY-M3UaJWL9IUNlAenQTmw8d09MIwSvBEFI7suXInAjy7uNWsrQS2udr1DVSV46IQqL5jIw." border="0" width="1044" height="325" id="Picture_x0020_1" style="display: inline;"></span></p>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="font-size:12.0pt; color:#2E74B5">Thanks &amp; Regards,</span></b><span lang="EN-US"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="font-size:12.0pt; font-family:&quot;Segoe UI&quot;,&quot;sans-serif&quot;; color:#2E74B5">Anupam Roy</span></b><span lang="EN-US"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><span lang="EN-US" style="font-family:Wingdings; color:#2E74B5">*</span><span lang="EN-US" style="color:#2E74B5">anupam1.roy@ril.com</span><span lang="EN-US"></span></p>
+<p class="MsoNormal" style="text-autospace:none"><b><span lang="EN-US" style="color:#2E74B5">Assignment Group</span></b><span lang="EN-US" style="color:#2E74B5">: RJIL TOPSSelfCare</span><span lang="EN-US"></span></p>
+<p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+</div>
+
+</div>
+</div></div> <div style="display: none;"></div> </div> </div></div> </div></div> </div> </div> </div></div><div autoid="_rp_N" class="popupShadow" ispopup="1" ismodal="true" style="display: none;"></div><div autoid="_rp_O" class="popupShadow" ispopup="1" ismodal="true" style="display: none;"></div></div></div></div></div><div style="display: none;"></div><div><div class="modalPanelBackground" ispopup="1" style="display: none;"></div></div><div class="errorDialog popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_5" aria-describedby="_ariaId_6" style="display: none;"></div><div autoid="_n_01" class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_3" aria-describedby="_ariaId_4" style="display: none;"></div><div class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_1" aria-describedby="_ariaId_2" style="display: none;"></div><div aria-atomic="false" aria-live="assertive" aria-relevant="additions" role="alert" class="offscreen"></div><div><div autoid="_n_T" class="popupShadow" ispopup="1" ismodal="true" role="alertdialog" aria-labelledby="_ariaId_7" aria-describedby="_ariaId_8" style="display: none;"></div></div><div style="display: none;"></div><div class="_n_15"><div></div></div><span id="extensionRuler" class="extensionRuler"></span></body></html>

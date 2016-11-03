@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+
+	<!-- 定时任务配置 scheduler 方式 注解 暂时不支持动态更新 -->
+	<context:component-scan base-package="org.jeecgframework.core.timer" />
+	<task:executor id="executor" pool-size="5" />
+	<task:scheduler id="scheduler" pool-size="10" />
+	<task:annotation-driven executor="executor" scheduler="scheduler" />
+		
+		<!-- 定时任务配置   syncController 可配置到管理界面 -->
+	<bean id="syncControllerTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="syncController" />
+		<property name="targetMethod" value="sync" />
+		<property name="concurrent" value="true" />
+	</bean>
+
+	<bean id="syncControllerTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="syncControllerTaskJob" />
+		<property name="cronExpression" value="0 0 12 * * ?" />
+	</bean>
+	<!-- 同步脚本 -->
+	<bean id="syncControllerSQLTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="syncController" />
+		<property name="targetMethod" value="download" />
+		<property name="concurrent" value="true" />
+	</bean>
+
+	<bean id="syncControllerSQLTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="syncControllerSQLTaskJob" />
+		<property name="cronExpression" value="0 30 23 * * ?" />
+	</bean>
+	<!-- 同步店铺产品脚本 -->
+	<bean id="syncStoreControllerSQLTaskJob"
+		  class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="syncController" />
+		<property name="targetMethod" value="syncStore" />
+		<property name="concurrent" value="true" />
+	</bean>
+
+	<bean id="syncStoreControllerSQLTrigger" class="org.jeecgframework.core.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="syncStoreControllerSQLTaskJob" />
+		<property name="cronExpression" value="0 30 23 * * ?" />
+	</bean>
+
+	<!-- 定时任务调度器 -->
+	<bean id="schedulerFactory" lazy-init="false" autowire="no"
+		class="org.jeecgframework.core.timer.DataBaseSchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="syncControllerTrigger" />
+				<ref bean="syncControllerSQLTrigger" />
+				<ref bean="syncStoreControllerSQLTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
