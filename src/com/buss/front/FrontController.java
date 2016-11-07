@@ -846,7 +846,7 @@ public class FrontController extends BaseController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String beginTime = sdf.format(timeStart.getTime());
 		cq.add(Restrictions.sqlRestriction("store_id='" + store.getStoreId() + "'   and time > '" + beginTime + "'"));
-		cq.addOrder("id",SortDirection.desc);
+		cq.addOrder("id", SortDirection.desc);
 		cq.add();
 		this.storeProductChangeService.getDataGridReturn(cq, true);
 
@@ -1102,8 +1102,8 @@ public class FrontController extends BaseController {
 		String[] orders = mProduct.getOrders().split(",");
 		List<String> list = new ArrayList<String>();
 		for(String l:orders){
-			c.add(Calendar.DAY_OF_MONTH, -1);
 			list.add("{\"date\":\""+new SimpleDateFormat("MM-dd").format(c.getTime())+"\",\"order\":\""+l+"\"}");
+			c.add(Calendar.DAY_OF_MONTH, -1);
 		}
 
 
@@ -2042,11 +2042,13 @@ public class FrontController extends BaseController {
 					j.setMsg(message);
 					return j;
 				}else{
-					mProduct = new MProductEntity();
-					mProduct.setPid(pid);
-					mProduct.setFirstDate(new Date());
-					mProductService.save(mProduct);
-
+					List<MProductEntity> proList = mProductService.findByQueryString("from MProductEntity where pid = " + pid );
+					if(proList.size()==0){
+						mProduct = new MProductEntity();
+						mProduct.setPid(pid);
+						mProduct.setFirstDate(new Date());
+						mProductService.save(mProduct);
+					}
 					WsProEntity wsProEntity = new WsProEntity();
 					wsProEntity.setWid(Integer.parseInt(wid));
 					wsProEntity.setPid(pid);
@@ -2088,12 +2090,16 @@ public class FrontController extends BaseController {
 			wsProEntity.setWid(Integer.parseInt(wid));
 			wsProEntity.setPid(pid);
 			wsProService.save(wsProEntity);
-			mProduct.setPid(pid);
 
-			mProduct.setSname(sName);
-			mProduct.setPrice(price);
-			mProduct.setFirstDate(new Date());
-			mProductService.save(mProduct);
+			List<MProductEntity> proList = mProductService.findByQueryString("from MProductEntity where pid = " + pid );
+			if(proList.size()==0){
+				mProduct = new MProductEntity();
+				mProduct.setPid(pid);
+				mProduct.setSname(sName);
+				mProduct.setPrice(price);
+				mProduct.setFirstDate(new Date());
+				mProductService.save(mProduct);
+			}
 			syncWsPro(wsProEntity, true);
 			j.setMsg(message);
 			return j;
@@ -2226,55 +2232,6 @@ public class FrontController extends BaseController {
 	@ResponseBody
 	public AjaxJson updateMProduct(HttpServletRequest req) {
 		AjaxJson j = new AjaxJson();
-
-		String json = req.getParameter("json");
-		json = json.replace("[","").replace("]","").trim();
-		System.out.print(json);
-		JSONObject jsonObject = JSONObject.fromObject(json);
-		AttentionProductEntity attProduct = (AttentionProductEntity) JSONObject.toBean(jsonObject, AttentionProductEntity.class);
-		List<MProductEntity> list = mProductService.findHql("from MProductEntity where pid=?", attProduct.getPid());
-		MProductEntity mProduct = new MProductEntity();
-		if(list!=null && list.size() > 0) {
-			mProduct = list.get(0);
-		}
-
-		boolean isChange = changeMethod(mProduct, attProduct);
-
-		mProduct.setImg(attProduct.getImg());
-		mProduct.setName(attProduct.getName());
-		mProduct.setPrice(attProduct.getPrice());
-		mProduct.setDay1(attProduct.getDay1());
-		mProduct.setDay3(attProduct.getDay3());
-		mProduct.setDay7(attProduct.getDay7());
-		mProduct.setCountrys(attProduct.getCountrys());
-		mProduct.setCustomerlever(attProduct.getCustomerlever());
-		mProduct.setCount(attProduct.getCount());
-		mProduct.setOrders(attProduct.getOrders());
-		mProduct.setMaxPrice(attProduct.getMaxPrice());
-		mProduct.setMinPrice(attProduct.getMinPrice());
-		if(isChange){
-			mProduct.setLastDate(new Date());//变更时间
-			mProduct.setViewed(0);
-			mProduct.setName(attProduct.getName());
-			mProduct.setImg(attProduct.getImg());
-			mProduct.setPrice(attProduct.getPrice());
-		}
-
-		mProductService.saveOrUpdate(mProduct);
-		j.setMsg(message);
-		return j;
-	}
-
-
-	/**
-	 * 更新工作组产品
-	 *
-	 * @return
-	 */
-	@RequestMapping(params = "updateMProducts")
-	@ResponseBody
-	public AjaxJson updateMProducts(HttpServletRequest req) {
-		AjaxJson j = new AjaxJson();
 		String json = req.getParameter("json");
 		JSONArray jsonArray = JSONArray.fromObject(json);
 		for (int i = 0; i < jsonArray.size(); i++) {
@@ -2286,7 +2243,7 @@ public class FrontController extends BaseController {
 				mProduct = list.get(0);
 			}
 
-			boolean isChange = changeMethod(mProduct, attProduct);
+			//boolean isChange = changeMethod(mProduct, attProduct);
 
 			mProduct.setImg(attProduct.getImg());
 			mProduct.setName(attProduct.getName());
@@ -2301,19 +2258,75 @@ public class FrontController extends BaseController {
 			mProduct.setMaxPrice(attProduct.getMaxPrice());
 			mProduct.setMinPrice(attProduct.getMinPrice());
 			mProduct.setSname(attProduct.getStoreName());
-			if(isChange){
+			mProduct.setLastDate(new Date());//变更时间
+			/*if(isChange){
 				mProduct.setLastDate(new Date());//变更时间
 				mProduct.setViewed(0);
-				mProduct.setName(attProduct.getName());
-				mProduct.setImg(attProduct.getImg());
-				mProduct.setPrice(attProduct.getPrice());
-			}
+			}*/
 
 			mProductService.saveOrUpdate(mProduct);
 		}
 
 		j.setMsg(message);
 		return j;
+	}
+
+
+	/**
+	 * 更新工作组产品
+	 *
+	 * @return
+	 */
+	@RequestMapping(params = "updateMProducts")
+	@ResponseBody
+	public AjaxJson updateMProducts(HttpServletRequest req) {
+		AjaxJson aj = new AjaxJson();
+		String json = req.getParameter("json");
+		JSONArray jsonArray = JSONArray.fromObject(json);
+		for (int i = 0; i < jsonArray.size(); i++) {
+			JSONObject jsonObject = JSONObject.fromObject(jsonArray.get(i));
+			AttentionProductEntity attProduct = (AttentionProductEntity) JSONObject.toBean(jsonObject, AttentionProductEntity.class);
+			List<MProductEntity> list = mProductService.findHql("from MProductEntity where pid=?",attProduct.getPid());
+			MProductEntity mProduct = new MProductEntity();
+			if(list!=null && list.size() > 0) {
+				mProduct = list.get(0);
+			}
+
+			boolean isChange = changeMethod(mProduct, attProduct);
+
+			//处理30天销量、day1、day3、day7、国家占比、客户占比
+			String orders = "";
+			int day1 = 0,day3 = 0,day7 = 0;
+			if(mProduct!=null){
+				String ors = mProduct.getOrders();
+				orders = attProduct.getOrders() + "," + ors.substring(2);
+				String os[] = orders.split(",");
+				day1 = Integer.parseInt(os[0]);
+				day3 = Integer.parseInt(os[0])+ Integer.parseInt(os[1])+ Integer.parseInt(os[2]);
+				day7 = Integer.parseInt(os[0])+ Integer.parseInt(os[1])+ Integer.parseInt(os[2])+ Integer.parseInt(os[3])+ Integer.parseInt(os[4])+ Integer.parseInt(os[5])+ Integer.parseInt(os[6]);
+
+			}
+
+
+			/*mProduct.setImg(attProduct.getImg());
+			mProduct.setName(attProduct.getName());*/
+			//mProduct.setPrice(attProduct.getPrice());
+			mProduct.setDay1(day1);
+			mProduct.setDay3(day3);
+			mProduct.setDay7(day7);
+			//由于与每日同步冲突，这边不记录
+			mProduct.setOrders(orders);
+			mProduct.setSname(attProduct.getStoreName());
+			if(isChange){
+				mProduct.setLastDate(new Date());//变更时间
+				mProduct.setViewed(0);
+			}
+
+			mProductService.saveOrUpdate(mProduct);
+		}
+
+		aj.setMsg(message);
+		return aj;
 	}
 
 

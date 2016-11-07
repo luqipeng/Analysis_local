@@ -96,14 +96,9 @@ public class SyncController extends BaseController{
 			syncData(0, tableName, "product_base");
 			//执行分析统计
 			try {
-//				analysisData(tableName);
-//				analysisWeekOrdersData("product_analysis");
 				repairProductToReal();
-				//doStatistics();
-
 				//添加今日销量到product_daily表,同时统计3 7 天销量到product表。
 				addToDaily();
-
 				//同步店铺信息---这个本地进行采集同步
 				syncStoreInfo();
 
@@ -801,7 +796,7 @@ public class SyncController extends BaseController{
 		message = "删除成功";
 		j.setMsg(message);
 		long end = System.currentTimeMillis();
-		System.out.println("耗时："+(end-start));
+		System.out.println("耗时：" + (end - start));
 		return j;
 	}
 
@@ -857,9 +852,8 @@ public class SyncController extends BaseController{
 	public AjaxJson syncCareProduct(HttpServletRequest request){
 		AjaxJson j = new AjaxJson();
 		long start = System.currentTimeMillis();
-		System.out.println("开始同步");
-
-		try {
+		syncCareProduct();
+		/*try {
 			ConnectionParam param_local = new ConnectionParam();
 			param_local.setDriver(Constant.driver);
 			param_local.setPassword(Constant.password);
@@ -946,7 +940,7 @@ public class SyncController extends BaseController{
 		} catch (Exception e) {
 			logger.error(e);
 			e.printStackTrace();
-		}
+		}*/
 		message = "关注产品同步成功";
 		j.setMsg(message);
 		long end = System.currentTimeMillis();
@@ -970,9 +964,9 @@ public class SyncController extends BaseController{
 			List<MProductEntity> list = mProductServiceI.loadAll(MProductEntity.class);
 			for(MProductEntity mProduct:list){
 				ResultSet rs = st.executeQuery("select * from Attention_Product where pid = "+ mProduct.getPid());
-				if(rs.next()){
+				while(rs.next()){
 					boolean isChange = false;
-					if((mProduct.getPrice()!=null ) && (rs.getString("price")!=null || rs.getString("price") != "null")){
+					if((mProduct.getPrice()!=null ) && (rs.getString("price")!=null && rs.getString("price") != "null")){
 						if(!mProduct.getPrice().trim().equals(rs.getString("price").trim())){
 							MChangeEntity mChange = new MChangeEntity();
 							mChange.setPid(mProduct.getPid());
@@ -982,10 +976,11 @@ public class SyncController extends BaseController{
 							mChange.setDate(new Date());
 							isChange = true;
 							mChangeService.save(mChange);
+							mProduct.setPrice(rs.getString("price"));
 						}
 
 					}
-					if((mProduct.getImg()!=null) && (rs.getString("img")!=null || rs.getString("img") != "null")){
+					if((mProduct.getImg()!=null) && (rs.getString("img")!=null && rs.getString("img") != "null")){
 						String old = mProduct.getImg().substring(20,mProduct.getImg().length()-1);
 						String now = rs.getString("img").substring(20,rs.getString("img").length()-1);
 						if(!old.equals(now)){
@@ -998,10 +993,12 @@ public class SyncController extends BaseController{
 							mChange.setDate(new Date());
 							isChange = true;
 							mChangeService.save(mChange);
+							mProduct.setImg(rs.getString("img"));
 						}
 
 					}
-					if((mProduct.getName()!=null) && (rs.getString("name") != null || rs.getString("name") != "null")){
+					String  name = rs.getString("name").trim();
+					if(mProduct.getName()!=null && !name.equals("")){
 						if(!mProduct.getName().trim().equals(rs.getString("name").trim())){
 							MChangeEntity mChange = new MChangeEntity();
 							mChange.setPid(mProduct.getPid());
@@ -1011,33 +1008,114 @@ public class SyncController extends BaseController{
 							mChange.setDate(new Date());
 							isChange = true;
 							mChangeService.save(mChange);
+							mProduct.setName(name);
 						}
-
+					}
+					if(mProduct.getName() == null){
+						mProduct.setName(name);
 					}
 					//直通车
 
-					if(rs.next()){
-						mProduct.setDay1(Integer.parseInt(rs.getString("day1")));
-						mProduct.setDay3(Integer.parseInt(rs.getString("day3")));
-						mProduct.setDay7(Integer.parseInt(rs.getString("day7")));
-						mProduct.setCount(Integer.parseInt(rs.getString("count")));
-						mProduct.setCustomerlever(rs.getString("customerlever"));
-						mProduct.setCountrys(rs.getString("countrys"));
-						mProduct.setOrders(rs.getString("orders"));
-						mProduct.setMaxPrice(rs.getString("max_price"));
-						mProduct.setMinPrice(rs.getString("min_price"));
-						mProduct.setSname(rs.getString("store_name"));
-						if(isChange){
-							mProduct.setLastDate(new Date());//变更时间
-							mProduct.setViewed(0);
-							mProduct.setName(rs.getString("name"));
-							mProduct.setImg(rs.getString("img"));
-							mProduct.setPrice(rs.getString("price"));
+					//处理30天销量、day1、day3、day7、国家占比、客户占比
+					String orders = "0";
+					String countrys = "";
+					String customerLevel = "";
+					int day1 = 0,day3 = 0,day7 = 0;
+					if(mProduct!=null){
+						String ors = rs.getString("orders") + "," + mProduct.getOrders().substring(2);
+						String os[] = ors.split(",");
+						for(int j=0;j<os.length-1;j++){
+							orders += "," + os[j];
 						}
-						mProductServiceI.saveOrUpdate(mProduct);
+						day1 = Integer.parseInt(os[0]);
+						day3 = Integer.parseInt(os[0])+ Integer.parseInt(os[1])+ Integer.parseInt(os[2]);
+						day7 = Integer.parseInt(os[0])+ Integer.parseInt(os[1])+ Integer.parseInt(os[2])+ Integer.parseInt(os[3])+ Integer.parseInt(os[4])+ Integer.parseInt(os[5])+ Integer.parseInt(os[6]);
+						//客戶级别
+						String oldCls = mProduct.getCustomerlever();
+						String newCls = rs.getString("customerlever");
+						String oldClss[] = oldCls.split(";");
+						String newClss[] = newCls.split(";");
+						Integer cls[] = new Integer[5];
+						for(int j=0;j<oldClss.length;j++){
+							String oldKeyValue[] = oldClss[j].split(":");
+							String newKeyValue[] = newClss[j].split(":");
+							cls[j] = (Integer.parseInt(oldKeyValue[1]) + Integer.parseInt(newKeyValue[1]));
+						}
+						customerLevel = "A0:"+cls[0]+";A1:"+cls[1]+";A2:"+cls[2]+";A3:"+cls[3]+";A4:"+cls[4];
+						//国家占比
+						HashMap<String, Integer> countryMaps = new HashMap<String, Integer>();
+						String oldCm = mProduct.getCountrys();
+						String oldCms[] = oldCm.split(",");
+						String newCm = rs.getString("countrys");
+						String newCms[] = newCm.split(",");
+						for(int j=0;j<oldCms.length;j++){
+							String keyValue[] = oldCms[j].split(":");
+							countryMaps.put(keyValue[0],Integer.parseInt(keyValue[1]));
+						}
+						for(int j=0;j<newCms.length;j++){
+							String keyValue[] = newCms[j].split(":");
+							if(keyValue.length>1){
+								if(countryMaps.containsKey(keyValue[0])){
+									countryMaps.put(keyValue[0],countryMaps.get(keyValue[0]) + Integer.parseInt(keyValue[1]));
+								}else{
+									countryMaps.put(keyValue[0],Integer.parseInt(keyValue[1]));
+								}
+							}
+						}
+						List<Map.Entry<String, Integer>> listNew = new ArrayList<Map.Entry<String, Integer>>(countryMaps.entrySet());
+						Collections.sort(listNew, new Comparator<Map.Entry<String, Integer>>() {
+							//降序排序
+							@Override
+							public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+								return o2.getValue().compareTo(o1.getValue());
+							}
+						});
+						for (Map.Entry<String, Integer> mapping : listNew) {
+							countrys += mapping.getKey() + ":" + mapping.getValue() + ",";
+						}
+						if(countrys!="" && countrys.length()>0){
+							countrys = countrys.substring(0,countrys.length()-1);
+						}
 					}
-				}
 
+					mProduct.setDay1(day1);
+					mProduct.setDay3(day3);
+					mProduct.setDay7(day7);
+					mProduct.setCount(mProduct.getCount() + day1);
+					mProduct.setCustomerlever(customerLevel);
+					mProduct.setCountrys(countrys);
+					mProduct.setOrders(orders);
+					if(rs.getString("price")!="0"){
+						if(rs.getString("price").contains("-")){
+							String maxPrice = rs.getString("price").split("-")[0];
+							if(Double.parseDouble(mProduct.getMaxPrice())<Double.parseDouble(maxPrice)){
+								mProduct.setMaxPrice(maxPrice);
+							}
+						}else{
+							if(mProduct.getMaxPrice() == null || Double.parseDouble(mProduct.getMaxPrice())>Double.parseDouble(rs.getString("price"))){
+								mProduct.setMaxPrice(rs.getString("price"));
+							}
+						}
+
+						if(rs.getString("price").contains("-")){
+							String minPrice = rs.getString("price").split("-")[0];
+							if(Double.parseDouble(mProduct.getMinPrice())>Double.parseDouble(minPrice)){
+								mProduct.setMinPrice(minPrice);
+							}
+						}else{
+							if(mProduct.getMinPrice() == null || Double.parseDouble(mProduct.getMinPrice())>Double.parseDouble(rs.getString("price"))){
+								mProduct.setMinPrice(rs.getString("price"));
+							}
+						}
+					}
+
+					mProduct.setSname(rs.getString("store_name"));
+					if(isChange){
+						mProduct.setLastDate(new Date());//变更时间
+						mProduct.setViewed(0);
+					}
+					mProductServiceI.saveOrUpdate(mProduct);
+				}
 			}
 		} catch (Exception e) {
 			logger.error(e);
