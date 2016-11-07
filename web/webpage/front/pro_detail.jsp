@@ -193,7 +193,11 @@
 		chart.write("mainDiv");
 	}
 
-	function refresh(){
+	function refresh(lastDate){
+		if( lastDate != ""){
+			alert("并非新品，无法更新");
+			return;
+		}
 		$.ajax({
 			type : "get",
 			dataType: 'text',
@@ -202,7 +206,7 @@
 				console.log(jsondata);
 				$.ajax({
 					type: "post",
-					url:"frontController.do?updateMProducts&json="+encodeURI(jsondata.replace('&','')),
+					url:"frontController.do?updateMProduct&json="+encodeURI(jsondata.replace('&','')),
 					success:function(){
 						window.location.reload();
 					}
@@ -245,7 +249,7 @@
 </div>
 
 <div id="left">
-	<a href="#" class="btn btn-default btn-sm" style="float: left;" onclick="refresh();">
+	<a href="#" class="btn btn-default btn-sm" style="float: left;" onclick="refresh('${mProduct.lastDate}');">
 		 更新最新数据
 	</a>
 	</br>
